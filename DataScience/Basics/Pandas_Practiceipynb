@@ -1,0 +1,4182 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Pandas_DIY-SV.ipynb",
+      "provenance": [],
+      "collapsed_sections": [
+        "LCfU9Gnft3Aq"
+      ]
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Y9GL9Lub6YtQ"
+      },
+      "source": [
+        "# import required libraries\n",
+        "import numpy as np\n",
+        "import pandas as pd\n"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "eP4Cmx1O38kX"
+      },
+      "source": [
+        "# Q1: Working with Pandas Series\n",
+        "\n",
+        "## Q1.1\n",
+        "Create a Pandas Series consisting of numbers from 1 to 13 using numpy array"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "7NsQwnLC33f8",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "98e22f48-b7e7-438b-96a3-d6fb23c5601d"
+      },
+      "source": [
+        "# type your code below\n",
+        "series = pd.Series(np.arange(1,14))\n",
+        "series"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0      1\n",
+              "1      2\n",
+              "2      3\n",
+              "3      4\n",
+              "4      5\n",
+              "5      6\n",
+              "6      7\n",
+              "7      8\n",
+              "8      9\n",
+              "9     10\n",
+              "10    11\n",
+              "11    12\n",
+              "12    13\n",
+              "dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 2
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3BL8Epzr6uTN"
+      },
+      "source": [
+        "## Q 1.2 \n",
+        "Add index column name as index_column and add series name as pandas_series"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "KDhC2pZg64ll",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "f460ee67-b3e4-4b77-9c5d-28defd8b6124"
+      },
+      "source": [
+        "# type your code below\n",
+        "pandas_series = pd.Series(np.arange(1,14), index=list('ABCDEFGHIJKLM'))\n",
+        "pandas_series"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "A     1\n",
+              "B     2\n",
+              "C     3\n",
+              "D     4\n",
+              "E     5\n",
+              "F     6\n",
+              "G     7\n",
+              "H     8\n",
+              "I     9\n",
+              "J    10\n",
+              "K    11\n",
+              "L    12\n",
+              "M    13\n",
+              "dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "AkLCwfzE8mtH"
+      },
+      "source": [
+        "## Q 1.3 \n",
+        "\n",
+        "Create a dataframe using the pandas series defined above\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "h05W8jYn8Mnc",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 452
+        },
+        "outputId": "f9cc2cf5-06e5-4cf5-e448-629470670b5c"
+      },
+      "source": [
+        "# type your code below\n",
+        "df = pd.DataFrame(pandas_series)\n",
+        "df\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>0</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>A</th>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>B</th>\n",
+              "      <td>2</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>C</th>\n",
+              "      <td>3</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>D</th>\n",
+              "      <td>4</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>E</th>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>F</th>\n",
+              "      <td>6</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>G</th>\n",
+              "      <td>7</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>H</th>\n",
+              "      <td>8</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>I</th>\n",
+              "      <td>9</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>J</th>\n",
+              "      <td>10</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>K</th>\n",
+              "      <td>11</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>L</th>\n",
+              "      <td>12</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>M</th>\n",
+              "      <td>13</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "    0\n",
+              "A   1\n",
+              "B   2\n",
+              "C   3\n",
+              "D   4\n",
+              "E   5\n",
+              "F   6\n",
+              "G   7\n",
+              "H   8\n",
+              "I   9\n",
+              "J  10\n",
+              "K  11\n",
+              "L  12\n",
+              "M  13"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 4
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "8niPOrEA816c"
+      },
+      "source": [
+        "## Q 1.4\n",
+        "\n",
+        "Create another pandas series with numbers from 0 to 13 but in reverse order"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "vTHyPcWY8-XM",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 452
+        },
+        "outputId": "8d9f87ce-db60-41f1-8b91-4078e0fa15c5"
+      },
+      "source": [
+        "# type your code below\n",
+        "df1 = df.sort_values(by=0, ascending=False)\n",
+        "df1\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>0</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>M</th>\n",
+              "      <td>13</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>L</th>\n",
+              "      <td>12</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>K</th>\n",
+              "      <td>11</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>J</th>\n",
+              "      <td>10</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>I</th>\n",
+              "      <td>9</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>H</th>\n",
+              "      <td>8</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>G</th>\n",
+              "      <td>7</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>F</th>\n",
+              "      <td>6</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>E</th>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>D</th>\n",
+              "      <td>4</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>C</th>\n",
+              "      <td>3</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>B</th>\n",
+              "      <td>2</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>A</th>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "    0\n",
+              "M  13\n",
+              "L  12\n",
+              "K  11\n",
+              "J  10\n",
+              "I   9\n",
+              "H   8\n",
+              "G   7\n",
+              "F   6\n",
+              "E   5\n",
+              "D   4\n",
+              "C   3\n",
+              "B   2\n",
+              "A   1"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "E4A88Dts-W58"
+      },
+      "source": [
+        "## Q 1.5 \n",
+        "\n",
+        "Assign series name as pandas_series2"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Lj0nVrHE-gNV",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "dae72527-b688-41de-c66a-00c937891d2c"
+      },
+      "source": [
+        "# type your code below\n",
+        "pandas_series2 = pandas_series\n",
+        "pandas_series2"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "A     1\n",
+              "B     2\n",
+              "C     3\n",
+              "D     4\n",
+              "E     5\n",
+              "F     6\n",
+              "G     7\n",
+              "H     8\n",
+              "I     9\n",
+              "J    10\n",
+              "K    11\n",
+              "L    12\n",
+              "M    13\n",
+              "dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3_0A1awo4Fq1"
+      },
+      "source": [
+        "# Q2: Dataframe from Python dictionary"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "pUCYaWhPHm0O"
+      },
+      "source": [
+        "\n",
+        "## Q 2.1\n",
+        "\n",
+        "Create a Python dictionary using both series defined above. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "7WTIfvuvFy_6",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 452
+        },
+        "outputId": "a8068bb3-0d12-4474-87c3-553feb8c1c4b"
+      },
+      "source": [
+        "# type your code below\n",
+        "dict1 = {\n",
+        "    'pandas_series':pandas_series,\n",
+        "    'pandas_series2':pandas_series2,\n",
+        "}\n",
+        "df_1 = pd.DataFrame(dict1)\n",
+        "df_1"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>pandas_series</th>\n",
+              "      <th>pandas_series2</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>A</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>B</th>\n",
+              "      <td>2</td>\n",
+              "      <td>2</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>C</th>\n",
+              "      <td>3</td>\n",
+              "      <td>3</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>D</th>\n",
+              "      <td>4</td>\n",
+              "      <td>4</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>E</th>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>F</th>\n",
+              "      <td>6</td>\n",
+              "      <td>6</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>G</th>\n",
+              "      <td>7</td>\n",
+              "      <td>7</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>H</th>\n",
+              "      <td>8</td>\n",
+              "      <td>8</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>I</th>\n",
+              "      <td>9</td>\n",
+              "      <td>9</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>J</th>\n",
+              "      <td>10</td>\n",
+              "      <td>10</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>K</th>\n",
+              "      <td>11</td>\n",
+              "      <td>11</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>L</th>\n",
+              "      <td>12</td>\n",
+              "      <td>12</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>M</th>\n",
+              "      <td>13</td>\n",
+              "      <td>13</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   pandas_series  pandas_series2\n",
+              "A              1               1\n",
+              "B              2               2\n",
+              "C              3               3\n",
+              "D              4               4\n",
+              "E              5               5\n",
+              "F              6               6\n",
+              "G              7               7\n",
+              "H              8               8\n",
+              "I              9               9\n",
+              "J             10              10\n",
+              "K             11              11\n",
+              "L             12              12\n",
+              "M             13              13"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 7
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "t3INJH0OGsez"
+      },
+      "source": [
+        "## Q 2.2 \n",
+        "Use the dictionary defined above to create a Python Dataframe with column names series_1 and series_2 respectively"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "2irSldhhFzIC",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 452
+        },
+        "outputId": "6f26f632-e1b9-472b-ee6f-08e05f8fa826"
+      },
+      "source": [
+        "# type your code below\n",
+        "cols = ['series_1','series_2']\n",
+        "df_2 = df_1.rename(columns={'pandas_series':'series_1','pandas_series2':'series_2'})\n",
+        "df_2"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>series_1</th>\n",
+              "      <th>series_2</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>A</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>B</th>\n",
+              "      <td>2</td>\n",
+              "      <td>2</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>C</th>\n",
+              "      <td>3</td>\n",
+              "      <td>3</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>D</th>\n",
+              "      <td>4</td>\n",
+              "      <td>4</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>E</th>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>F</th>\n",
+              "      <td>6</td>\n",
+              "      <td>6</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>G</th>\n",
+              "      <td>7</td>\n",
+              "      <td>7</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>H</th>\n",
+              "      <td>8</td>\n",
+              "      <td>8</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>I</th>\n",
+              "      <td>9</td>\n",
+              "      <td>9</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>J</th>\n",
+              "      <td>10</td>\n",
+              "      <td>10</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>K</th>\n",
+              "      <td>11</td>\n",
+              "      <td>11</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>L</th>\n",
+              "      <td>12</td>\n",
+              "      <td>12</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>M</th>\n",
+              "      <td>13</td>\n",
+              "      <td>13</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   series_1  series_2\n",
+              "A         1         1\n",
+              "B         2         2\n",
+              "C         3         3\n",
+              "D         4         4\n",
+              "E         5         5\n",
+              "F         6         6\n",
+              "G         7         7\n",
+              "H         8         8\n",
+              "I         9         9\n",
+              "J        10        10\n",
+              "K        11        11\n",
+              "L        12        12\n",
+              "M        13        13"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "LrYZRuJQHevf"
+      },
+      "source": [
+        "## Q 2.3\n",
+        "\n",
+        "Rename column names to val_1 and val_2 respectively"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "uvBSsUqfFzLG",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 452
+        },
+        "outputId": "bd9c558a-5973-4fa7-8d20-4599f48b69e9"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_3 = df_2.rename(columns={'series_1':'val_1','series_2':'val_2'})\n",
+        "df_3"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>val_1</th>\n",
+              "      <th>val_2</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>A</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>B</th>\n",
+              "      <td>2</td>\n",
+              "      <td>2</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>C</th>\n",
+              "      <td>3</td>\n",
+              "      <td>3</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>D</th>\n",
+              "      <td>4</td>\n",
+              "      <td>4</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>E</th>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>F</th>\n",
+              "      <td>6</td>\n",
+              "      <td>6</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>G</th>\n",
+              "      <td>7</td>\n",
+              "      <td>7</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>H</th>\n",
+              "      <td>8</td>\n",
+              "      <td>8</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>I</th>\n",
+              "      <td>9</td>\n",
+              "      <td>9</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>J</th>\n",
+              "      <td>10</td>\n",
+              "      <td>10</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>K</th>\n",
+              "      <td>11</td>\n",
+              "      <td>11</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>L</th>\n",
+              "      <td>12</td>\n",
+              "      <td>12</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>M</th>\n",
+              "      <td>13</td>\n",
+              "      <td>13</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   val_1  val_2\n",
+              "A      1      1\n",
+              "B      2      2\n",
+              "C      3      3\n",
+              "D      4      4\n",
+              "E      5      5\n",
+              "F      6      6\n",
+              "G      7      7\n",
+              "H      8      8\n",
+              "I      9      9\n",
+              "J     10     10\n",
+              "K     11     11\n",
+              "L     12     12\n",
+              "M     13     13"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 9
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "V2L_BDgVH3Iz"
+      },
+      "source": [
+        "## Q 2.4\n",
+        "\n",
+        "Rename index column name as index_col"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "HHtKaXKcFzNZ",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 483
+        },
+        "outputId": "49e0e8f6-1aa2-409a-a6ff-a227754acde5"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_2.index.name = 'index_col'\n",
+        "df_2"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>series_1</th>\n",
+              "      <th>series_2</th>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>index_col</th>\n",
+              "      <th></th>\n",
+              "      <th></th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>A</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>B</th>\n",
+              "      <td>2</td>\n",
+              "      <td>2</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>C</th>\n",
+              "      <td>3</td>\n",
+              "      <td>3</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>D</th>\n",
+              "      <td>4</td>\n",
+              "      <td>4</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>E</th>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>F</th>\n",
+              "      <td>6</td>\n",
+              "      <td>6</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>G</th>\n",
+              "      <td>7</td>\n",
+              "      <td>7</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>H</th>\n",
+              "      <td>8</td>\n",
+              "      <td>8</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>I</th>\n",
+              "      <td>9</td>\n",
+              "      <td>9</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>J</th>\n",
+              "      <td>10</td>\n",
+              "      <td>10</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>K</th>\n",
+              "      <td>11</td>\n",
+              "      <td>11</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>L</th>\n",
+              "      <td>12</td>\n",
+              "      <td>12</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>M</th>\n",
+              "      <td>13</td>\n",
+              "      <td>13</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "           series_1  series_2\n",
+              "index_col                    \n",
+              "A                 1         1\n",
+              "B                 2         2\n",
+              "C                 3         3\n",
+              "D                 4         4\n",
+              "E                 5         5\n",
+              "F                 6         6\n",
+              "G                 7         7\n",
+              "H                 8         8\n",
+              "I                 9         9\n",
+              "J                10        10\n",
+              "K                11        11\n",
+              "L                12        12\n",
+              "M                13        13"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 10
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "v0RsSdgE4Fz-"
+      },
+      "source": [
+        "# Q3: Working with Pandas data types\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "wFStwk8IIJzs"
+      },
+      "source": [
+        "## Q 3.1\n",
+        "Create a data frame with 6 different dtypes (not necessarily in the same order)\n",
+        "\n",
+        ">* datetime64\n",
+        ">* ndarray\n",
+        ">* float64\n",
+        ">* int32\n",
+        ">* int64\n",
+        ">* Categorical\n",
+        ">* string\n",
+        "\n",
+        "You should demonstrate the use of pandas Series and NumPy arrays. \n",
+        "Hint: Use the example done in the lecture"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "PzPl3Ai1IDhq"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_4 = pd.DataFrame({\n",
+        "    'col_0': pd.Timestamp(\"20010102\"),\n",
+        "    'col_1': np.array([1, 2, 3]),\n",
+        "    'col_2': pd.Series([1]*3, dtype='float64'),\n",
+        "    'col_3': pd.Series([1]*3, dtype='int32'),\n",
+        "    'col_4': pd.Series([1]*3, dtype='int64'),\n",
+        "    'col_5': pd.Series([1]*3, dtype='category'),\n",
+        "    'col_6': pd.Series(['A']*3, dtype='str'),\n",
+        "})\n"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ulrXh5DrLzWO"
+      },
+      "source": [
+        "## Q 3.2\n",
+        "\n",
+        "Print the different data types"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Vu7NzJ_0IuZU",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "706a35b5-0ec1-499f-c431-356a74a0a8cb"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_4.dtypes"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "col_0    datetime64[ns]\n",
+              "col_1             int64\n",
+              "col_2           float64\n",
+              "col_3             int32\n",
+              "col_4             int64\n",
+              "col_5          category\n",
+              "col_6            object\n",
+              "dtype: object"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 12
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Bt7u6LGDL6Cz"
+      },
+      "source": [
+        "## Q 3.3\n",
+        "\n",
+        "Change col_1 data type to int32 and col_4 data type to float64"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "oYOKES2wNfVD",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "8a1cb160-192f-461c-b225-c4dad883a9ba"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_4['col_1']=df_4['col_1'].astype('int32')\n",
+        "df_4['col_4']=df_4['col_1'].astype('float64')\n",
+        "\n",
+        "df_4.dtypes\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "col_0    datetime64[ns]\n",
+              "col_1             int32\n",
+              "col_2           float64\n",
+              "col_3             int32\n",
+              "col_4           float64\n",
+              "col_5          category\n",
+              "col_6            object\n",
+              "dtype: object"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 13
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "7k4IPC94L6SY"
+      },
+      "source": [
+        "##Q 3.4 \n",
+        "\n",
+        "Create a series from the col_4"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "PLgac_dBL6rT",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "aaa3fca4-6f64-4b54-da1f-b31ab9ebe429"
+      },
+      "source": [
+        "# type your code below.\n",
+        "series_pd = pd.Series(df_4['col_4'])\n",
+        "type(series_pd)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "pandas.core.series.Series"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 14
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "bMgzz9IGL68s"
+      },
+      "source": [
+        "## Q 3.5\n",
+        "\n",
+        "Verify that the above series and dataframe are pandas series and dataframe respectively"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "vKie_N6wWlWs",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "c61f4908-7b72-4606-d583-bce218220408"
+      },
+      "source": [
+        "# type your code below\n",
+        "print(series_pd)\n",
+        "print(df_4)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "0    1.0\n",
+            "1    2.0\n",
+            "2    3.0\n",
+            "Name: col_4, dtype: float64\n",
+            "       col_0  col_1  col_2  col_3  col_4 col_5 col_6\n",
+            "0 2001-01-02      1    1.0      1    1.0     1     A\n",
+            "1 2001-01-02      2    1.0      1    2.0     1     A\n",
+            "2 2001-01-02      3    1.0      1    3.0     1     A\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "eDk2RpVc4F32"
+      },
+      "source": [
+        "#Q4: Creating a DataFrame"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "FoZCt93vO6xK"
+      },
+      "source": [
+        "## Q 4.1\n",
+        "\n",
+        "Create a pandas dataframe as shown below\n",
+        "\n",
+        "![Series vs. Dataframe ](https://drive.google.com/uc?export=view&id=1LUK-Px0uf8UkQOA4b1XhzBZzqrRLPVkt)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "bshBHs5OkBJb",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 359
+        },
+        "outputId": "a59a9c0b-d4aa-48b8-967c-adb1c5d67f09"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5 = pd.DataFrame({\n",
+        "    'student_id': [2,10,4,5,1,7,8,6,9,3],\n",
+        "    'student_name':['Araceli','Martin','Diann','Stacy','Leticia','Roxane','Venice','Jacquelyne','Erich','Linda'],\n",
+        "    'student_age':[23,45,26,32,29,34,24,27,28,35],\n",
+        "    'student_gender':['M','F','TG','F','M','F','TG','F','M','F'],\n",
+        "    'student_course':['PP','EX','PP','NPP','EX','NPP','PP','NPP','PP','NPP'],\n",
+        "})\n",
+        "\n",
+        "df_5"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Araceli</td>\n",
+              "      <td>23</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>10</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>45</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>4</td>\n",
+              "      <td>Diann</td>\n",
+              "      <td>26</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>5</td>\n",
+              "      <td>Stacy</td>\n",
+              "      <td>32</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Leticia</td>\n",
+              "      <td>29</td>\n",
+              "      <td>M</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>7</td>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>34</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>8</td>\n",
+              "      <td>Venice</td>\n",
+              "      <td>24</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>6</td>\n",
+              "      <td>Jacquelyne</td>\n",
+              "      <td>27</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>9</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>28</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>3</td>\n",
+              "      <td>Linda</td>\n",
+              "      <td>35</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "0           2      Araceli           23              M             PP\n",
+              "1          10       Martin           45              F             EX\n",
+              "2           4        Diann           26             TG             PP\n",
+              "3           5        Stacy           32              F            NPP\n",
+              "4           1      Leticia           29              M             EX\n",
+              "5           7       Roxane           34              F            NPP\n",
+              "6           8       Venice           24             TG             PP\n",
+              "7           6   Jacquelyne           27              F            NPP\n",
+              "8           9        Erich           28              M             PP\n",
+              "9           3        Linda           35              F            NPP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 16
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "1NST898gO69h"
+      },
+      "source": [
+        "## Q 4.2 \n",
+        "\n",
+        "Print the top 3 rows"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "W18YythSQgpj",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 142
+        },
+        "outputId": "924f088a-8998-45f7-8a28-2ff1e0754879"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.head(3)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Araceli</td>\n",
+              "      <td>23</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>10</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>45</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>4</td>\n",
+              "      <td>Diann</td>\n",
+              "      <td>26</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "0           2      Araceli           23              M             PP\n",
+              "1          10       Martin           45              F             EX\n",
+              "2           4        Diann           26             TG             PP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 17
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "YefFz0U5Qx8L"
+      },
+      "source": [
+        "## Q 4.3\n",
+        "\n",
+        "Display the column names"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "xmqXUOIOQxOE",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "d48478af-be04-458d-856a-2909d26b554b"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.columns"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Index(['student_id', 'student_name', 'student_age', 'student_gender',\n",
+              "       'student_course'],\n",
+              "      dtype='object')"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 18
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "eqKVKpG6Qhmu"
+      },
+      "source": [
+        "## Q 4.4\n",
+        "\n",
+        "Print the bottom 4 rows"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "-s2259NAO7Da",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 173
+        },
+        "outputId": "1e0ebae1-5af2-4829-d9ca-f1deb5c6f378"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.tail(4)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>8</td>\n",
+              "      <td>Venice</td>\n",
+              "      <td>24</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>6</td>\n",
+              "      <td>Jacquelyne</td>\n",
+              "      <td>27</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>9</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>28</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>3</td>\n",
+              "      <td>Linda</td>\n",
+              "      <td>35</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "6           8       Venice           24             TG             PP\n",
+              "7           6   Jacquelyne           27              F            NPP\n",
+              "8           9        Erich           28              M             PP\n",
+              "9           3        Linda           35              F            NPP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 19
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "BEF3iooMO7Iv"
+      },
+      "source": [
+        "## Q 4.5\n",
+        "\n",
+        "Display the index "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "BXyf91ZoO7OK",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "00342720-ad34-4cc2-c5cc-0d662b3247c1"
+      },
+      "source": [
+        "# type your code below\n",
+        "print(df_5.index)\n",
+        "print(df_5.index.values)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "RangeIndex(start=0, stop=10, step=1)\n",
+            "[0 1 2 3 4 5 6 7 8 9]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "KgaqtZnq4F6m"
+      },
+      "source": [
+        "# Q5: Dataframe to NumPy array"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QQetHfIyktuF"
+      },
+      "source": [
+        "## Q 5.1\n",
+        "\n",
+        "Convert the above student records dataframe to a numpy array"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "wotw6cqSROAy",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "e37bd83c-b326-4458-a32a-5978b80bdde1"
+      },
+      "source": [
+        "# type your code below\n",
+        "arr = df_5.to_numpy()\n",
+        "print(arr)\n",
+        "print(type(arr))"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[[2 'Araceli' 23 'M' 'PP']\n",
+            " [10 'Martin' 45 'F' 'EX']\n",
+            " [4 'Diann' 26 'TG' 'PP']\n",
+            " [5 'Stacy' 32 'F' 'NPP']\n",
+            " [1 'Leticia' 29 'M' 'EX']\n",
+            " [7 'Roxane' 34 'F' 'NPP']\n",
+            " [8 'Venice' 24 'TG' 'PP']\n",
+            " [6 'Jacquelyne' 27 'F' 'NPP']\n",
+            " [9 'Erich' 28 'M' 'PP']\n",
+            " [3 'Linda' 35 'F' 'NPP']]\n",
+            "<class 'numpy.ndarray'>\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "sW5RuWV-kqav"
+      },
+      "source": [
+        "## Q 5.2 \n",
+        "Save the above numpy array to a binary file in NumPy"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "uxtj0XmakqhW"
+      },
+      "source": [
+        "# type your code below\n",
+        "np.savetxt('student.txt', arr, fmt='%s')\n"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "SyulTwUekqmY"
+      },
+      "source": [
+        "## Q 5.3\n",
+        "\n",
+        "Load the saved array and print the contents\n",
+        "\n",
+        "Note: Loading files that contain object arrays uses the pickle module. Check the syntax of the command how to use that."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "EsnKtcd5kqsL",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "f95ad552-da8b-457b-c1bd-e4e3f21ad89b"
+      },
+      "source": [
+        "# type your code below\n",
+        "arr2 = np.loadtxt('student.txt', dtype=str) # check allow pickle\n",
+        "arr2"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([['2', 'Araceli', '23', 'M', 'PP'],\n",
+              "       ['10', 'Martin', '45', 'F', 'EX'],\n",
+              "       ['4', 'Diann', '26', 'TG', 'PP'],\n",
+              "       ['5', 'Stacy', '32', 'F', 'NPP'],\n",
+              "       ['1', 'Leticia', '29', 'M', 'EX'],\n",
+              "       ['7', 'Roxane', '34', 'F', 'NPP'],\n",
+              "       ['8', 'Venice', '24', 'TG', 'PP'],\n",
+              "       ['6', 'Jacquelyne', '27', 'F', 'NPP'],\n",
+              "       ['9', 'Erich', '28', 'M', 'PP'],\n",
+              "       ['3', 'Linda', '35', 'F', 'NPP']], dtype='<U10')"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 23
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jIN5sMM44F9I"
+      },
+      "source": [
+        "# Q6: Statistic Summary"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "HiNfHLL1mx4e"
+      },
+      "source": [
+        "## Q 6.1\n",
+        "\n",
+        "Generate statistic summary of your data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "xKjWdtceROhC",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 297
+        },
+        "outputId": "dec9d8bc-2c13-4daa-e5b8-7df6d1d176b5"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.describe()"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_age</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>count</th>\n",
+              "      <td>10.00000</td>\n",
+              "      <td>10.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>mean</th>\n",
+              "      <td>5.50000</td>\n",
+              "      <td>30.300000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>std</th>\n",
+              "      <td>3.02765</td>\n",
+              "      <td>6.532823</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>min</th>\n",
+              "      <td>1.00000</td>\n",
+              "      <td>23.000000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>25%</th>\n",
+              "      <td>3.25000</td>\n",
+              "      <td>26.250000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>50%</th>\n",
+              "      <td>5.50000</td>\n",
+              "      <td>28.500000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>75%</th>\n",
+              "      <td>7.75000</td>\n",
+              "      <td>33.500000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>max</th>\n",
+              "      <td>10.00000</td>\n",
+              "      <td>45.000000</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "       student_id  student_age\n",
+              "count    10.00000    10.000000\n",
+              "mean      5.50000    30.300000\n",
+              "std       3.02765     6.532823\n",
+              "min       1.00000    23.000000\n",
+              "25%       3.25000    26.250000\n",
+              "50%       5.50000    28.500000\n",
+              "75%       7.75000    33.500000\n",
+              "max      10.00000    45.000000"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 24
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 173
+        },
+        "id": "0vxmqDjsoVvw",
+        "outputId": "8998e0af-6e24-4a32-ab87-95aa63cab357"
+      },
+      "source": [
+        "df_6.describe() # Transpose Describe\n",
+        "# Check if we can inference anything"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>0</th>\n",
+              "      <th>1</th>\n",
+              "      <th>2</th>\n",
+              "      <th>3</th>\n",
+              "      <th>4</th>\n",
+              "      <th>5</th>\n",
+              "      <th>6</th>\n",
+              "      <th>7</th>\n",
+              "      <th>8</th>\n",
+              "      <th>9</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>count</th>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>unique</th>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>top</th>\n",
+              "      <td>23</td>\n",
+              "      <td>F</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>F</td>\n",
+              "      <td>PP</td>\n",
+              "      <td>F</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>freq</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "         0  1   2  3   4       5   6  7   8  9\n",
+              "count    5  5   5  5   5       5   5  5   5  5\n",
+              "unique   5  5   5  5   5       5   5  5   5  5\n",
+              "top     23  F  TG  F  EX  Roxane  TG  F  PP  F\n",
+              "freq     1  1   1  1   1       1   1  1   1  1"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 44
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "-a9jQlF8mquX"
+      },
+      "source": [
+        "## Q 6.2 \n",
+        "Explain the results you obtained above"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Ek8uT2qmm4DD"
+      },
+      "source": [
+        "############# Write your answer below  ####################"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "W7xHNsBQ4F_7"
+      },
+      "source": [
+        "# Q7: Dataframe transpose\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "DLxpHIZUhIJ5"
+      },
+      "source": [
+        "## Q 7.1\n",
+        "\n",
+        "Transpose your data frame"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "l6uzmPk0hGP7",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "540ed3b8-f058-4492-910d-48a31b5ab139"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_6=df_5.T\n",
+        "df_6"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>0</th>\n",
+              "      <th>1</th>\n",
+              "      <th>2</th>\n",
+              "      <th>3</th>\n",
+              "      <th>4</th>\n",
+              "      <th>5</th>\n",
+              "      <th>6</th>\n",
+              "      <th>7</th>\n",
+              "      <th>8</th>\n",
+              "      <th>9</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>student_id</th>\n",
+              "      <td>2</td>\n",
+              "      <td>10</td>\n",
+              "      <td>4</td>\n",
+              "      <td>5</td>\n",
+              "      <td>1</td>\n",
+              "      <td>7</td>\n",
+              "      <td>8</td>\n",
+              "      <td>6</td>\n",
+              "      <td>9</td>\n",
+              "      <td>3</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>student_name</th>\n",
+              "      <td>Araceli</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>Diann</td>\n",
+              "      <td>Stacy</td>\n",
+              "      <td>Leticia</td>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>Venice</td>\n",
+              "      <td>Jacquelyne</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>Linda</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>student_age</th>\n",
+              "      <td>23</td>\n",
+              "      <td>45</td>\n",
+              "      <td>26</td>\n",
+              "      <td>32</td>\n",
+              "      <td>29</td>\n",
+              "      <td>34</td>\n",
+              "      <td>24</td>\n",
+              "      <td>27</td>\n",
+              "      <td>28</td>\n",
+              "      <td>35</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>student_gender</th>\n",
+              "      <td>M</td>\n",
+              "      <td>F</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>F</td>\n",
+              "      <td>M</td>\n",
+              "      <td>F</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>F</td>\n",
+              "      <td>M</td>\n",
+              "      <td>F</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>student_course</th>\n",
+              "      <td>PP</td>\n",
+              "      <td>EX</td>\n",
+              "      <td>PP</td>\n",
+              "      <td>NPP</td>\n",
+              "      <td>EX</td>\n",
+              "      <td>NPP</td>\n",
+              "      <td>PP</td>\n",
+              "      <td>NPP</td>\n",
+              "      <td>PP</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "                      0       1      2      3  ...       6           7      8      9\n",
+              "student_id            2      10      4      5  ...       8           6      9      3\n",
+              "student_name    Araceli  Martin  Diann  Stacy  ...  Venice  Jacquelyne  Erich  Linda\n",
+              "student_age          23      45     26     32  ...      24          27     28     35\n",
+              "student_gender        M       F     TG      F  ...      TG           F      M      F\n",
+              "student_course       PP      EX     PP    NPP  ...      PP         NPP     PP    NPP\n",
+              "\n",
+              "[5 rows x 10 columns]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 25
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "0FnPqouyhKii"
+      },
+      "source": [
+        "## Q 7.2\n",
+        "\n",
+        "Calculate the descriptive statistics of the transposed dataframe"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "R119MKMYhKpo",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 173
+        },
+        "outputId": "994e8a11-20d7-4c54-e3b5-14f58310d41d"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_6.describe()"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>0</th>\n",
+              "      <th>1</th>\n",
+              "      <th>2</th>\n",
+              "      <th>3</th>\n",
+              "      <th>4</th>\n",
+              "      <th>5</th>\n",
+              "      <th>6</th>\n",
+              "      <th>7</th>\n",
+              "      <th>8</th>\n",
+              "      <th>9</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>count</th>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>unique</th>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "      <td>5</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>top</th>\n",
+              "      <td>23</td>\n",
+              "      <td>F</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>F</td>\n",
+              "      <td>PP</td>\n",
+              "      <td>F</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>freq</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "         0  1   2  3   4       5   6  7   8  9\n",
+              "count    5  5   5  5   5       5   5  5   5  5\n",
+              "unique   5  5   5  5   5       5   5  5   5  5\n",
+              "top     23  F  TG  F  EX  Roxane  TG  F  PP  F\n",
+              "freq     1  1   1  1   1       1   1  1   1  1"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 26
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "tflFKl2yhKzM"
+      },
+      "source": [
+        "## Q 7.3\n",
+        "\n",
+        "Compare this with the initial descriptive statistics -  what do you conclude based on both descriptive startics?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "XNsrndMWnvaa"
+      },
+      "source": [
+        "############# Write your answer below  ####################"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "tMrveJvka9nn"
+      },
+      "source": [
+        "If multiple object values have the highest count, then the count and top results will be arbitrarily chosen from among those with the highest count."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "snhpX_Ua4GFo"
+      },
+      "source": [
+        "# Q8: Sorting\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "M279tvDrRfPy"
+      },
+      "source": [
+        "## Q 8.1\n",
+        "\n",
+        "Sort the values as per column name in descending order"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "DX6r06feoLmR",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 359
+        },
+        "outputId": "7c383c69-60eb-4d48-e572-a46dcacfc3e6"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.sort_values(by='student_age', ascending=False)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>10</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>45</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>3</td>\n",
+              "      <td>Linda</td>\n",
+              "      <td>35</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>7</td>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>34</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>5</td>\n",
+              "      <td>Stacy</td>\n",
+              "      <td>32</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Leticia</td>\n",
+              "      <td>29</td>\n",
+              "      <td>M</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>9</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>28</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>6</td>\n",
+              "      <td>Jacquelyne</td>\n",
+              "      <td>27</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>4</td>\n",
+              "      <td>Diann</td>\n",
+              "      <td>26</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>8</td>\n",
+              "      <td>Venice</td>\n",
+              "      <td>24</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Araceli</td>\n",
+              "      <td>23</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "1          10       Martin           45              F             EX\n",
+              "9           3        Linda           35              F            NPP\n",
+              "5           7       Roxane           34              F            NPP\n",
+              "3           5        Stacy           32              F            NPP\n",
+              "4           1      Leticia           29              M             EX\n",
+              "8           9        Erich           28              M             PP\n",
+              "7           6   Jacquelyne           27              F            NPP\n",
+              "2           4        Diann           26             TG             PP\n",
+              "6           8       Venice           24             TG             PP\n",
+              "0           2      Araceli           23              M             PP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 27
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "UrQC9knCsV16"
+      },
+      "source": [
+        "## Q 8.2\n",
+        "\n",
+        "Sort in descending index order"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "U4w3eYGwRiL8",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 359
+        },
+        "outputId": "5a97574e-3375-466e-bdc6-d09336d2d4e9"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.sort_index(ascending=False)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>3</td>\n",
+              "      <td>Linda</td>\n",
+              "      <td>35</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>9</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>28</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>6</td>\n",
+              "      <td>Jacquelyne</td>\n",
+              "      <td>27</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>8</td>\n",
+              "      <td>Venice</td>\n",
+              "      <td>24</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>7</td>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>34</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Leticia</td>\n",
+              "      <td>29</td>\n",
+              "      <td>M</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>5</td>\n",
+              "      <td>Stacy</td>\n",
+              "      <td>32</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>4</td>\n",
+              "      <td>Diann</td>\n",
+              "      <td>26</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>10</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>45</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Araceli</td>\n",
+              "      <td>23</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "9           3        Linda           35              F            NPP\n",
+              "8           9        Erich           28              M             PP\n",
+              "7           6   Jacquelyne           27              F            NPP\n",
+              "6           8       Venice           24             TG             PP\n",
+              "5           7       Roxane           34              F            NPP\n",
+              "4           1      Leticia           29              M             EX\n",
+              "3           5        Stacy           32              F            NPP\n",
+              "2           4        Diann           26             TG             PP\n",
+              "1          10       Martin           45              F             EX\n",
+              "0           2      Araceli           23              M             PP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 28
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "TWMVLizlsdon"
+      },
+      "source": [
+        "## Q 8.3 \n",
+        "\n",
+        "Sort the values as per column name in descending order and with descending index order"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "gk5wyykmsdvs",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 359
+        },
+        "outputId": "e3bbf03c-b931-4173-9945-e95677033854"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_51 = df_5.sort_index(axis=1, ascending=False)\n",
+        "df_51.sort_index(ascending=False)\n",
+        "# df[df_5.sort_index(axis=1, ascending=False)]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "      <th>student_age</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>Linda</td>\n",
+              "      <td>3</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "      <td>35</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>Erich</td>\n",
+              "      <td>9</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "      <td>28</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>Jacquelyne</td>\n",
+              "      <td>6</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "      <td>27</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>Venice</td>\n",
+              "      <td>8</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "      <td>24</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>7</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "      <td>34</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>Leticia</td>\n",
+              "      <td>1</td>\n",
+              "      <td>M</td>\n",
+              "      <td>EX</td>\n",
+              "      <td>29</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>Stacy</td>\n",
+              "      <td>5</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "      <td>32</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>Diann</td>\n",
+              "      <td>4</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "      <td>26</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>Martin</td>\n",
+              "      <td>10</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "      <td>45</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>Araceli</td>\n",
+              "      <td>2</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "      <td>23</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "  student_name  student_id student_gender student_course  student_age\n",
+              "9        Linda           3              F            NPP           35\n",
+              "8        Erich           9              M             PP           28\n",
+              "7   Jacquelyne           6              F            NPP           27\n",
+              "6       Venice           8             TG             PP           24\n",
+              "5       Roxane           7              F            NPP           34\n",
+              "4      Leticia           1              M             EX           29\n",
+              "3        Stacy           5              F            NPP           32\n",
+              "2        Diann           4             TG             PP           26\n",
+              "1       Martin          10              F             EX           45\n",
+              "0      Araceli           2              M             PP           23"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 29
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "IovnD4GDRiUl"
+      },
+      "source": [
+        "## Q 8.4\n",
+        "\n",
+        "sort the values of your dataframe using your student id"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "SCBfkTMHRif8",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 359
+        },
+        "outputId": "ac9a6315-afa4-4db5-d59d-676161a1f31e"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.sort_values(by='student_id') # works without by also\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Leticia</td>\n",
+              "      <td>29</td>\n",
+              "      <td>M</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Araceli</td>\n",
+              "      <td>23</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>3</td>\n",
+              "      <td>Linda</td>\n",
+              "      <td>35</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>4</td>\n",
+              "      <td>Diann</td>\n",
+              "      <td>26</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>5</td>\n",
+              "      <td>Stacy</td>\n",
+              "      <td>32</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>6</td>\n",
+              "      <td>Jacquelyne</td>\n",
+              "      <td>27</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>7</td>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>34</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>8</td>\n",
+              "      <td>Venice</td>\n",
+              "      <td>24</td>\n",
+              "      <td>TG</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>9</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>28</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>10</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>45</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "4           1      Leticia           29              M             EX\n",
+              "0           2      Araceli           23              M             PP\n",
+              "9           3        Linda           35              F            NPP\n",
+              "2           4        Diann           26             TG             PP\n",
+              "3           5        Stacy           32              F            NPP\n",
+              "7           6   Jacquelyne           27              F            NPP\n",
+              "5           7       Roxane           34              F            NPP\n",
+              "6           8       Venice           24             TG             PP\n",
+              "8           9        Erich           28              M             PP\n",
+              "1          10       Martin           45              F             EX"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 48
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ckCfk3kU4RYO"
+      },
+      "source": [
+        "# Q9: Slicing and Selection\n",
+        "\n",
+        "Use iloc for the below questions"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ZK1aMA9DlJx5"
+      },
+      "source": [
+        "## Q 9.1\n",
+        "\n",
+        "Print 2 and 4th rows "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "KkTxikAWlJ-W",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 111
+        },
+        "outputId": "23b66c10-b1b4-4359-c653-2febc46c8870"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.iloc[[1,3]]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>10</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>45</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>5</td>\n",
+              "      <td>Stacy</td>\n",
+              "      <td>32</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "1          10       Martin           45              F             EX\n",
+              "3           5        Stacy           32              F            NPP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 31
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "SUISaz4Ss7EW"
+      },
+      "source": [
+        "## Q 9.2\n",
+        "\n",
+        "Display the student name and gender for 3rd and 8th record"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "29r7GToAs7Wj",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 111
+        },
+        "outputId": "10786895-9d73-4d1c-f66a-e67e49576c9f"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.iloc[[2,7]][['student_id','student_gender']]\n",
+        "# employee_records.loc[employee_records['employee_dept']=='HR']"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_gender</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>4</td>\n",
+              "      <td>TG</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>6</td>\n",
+              "      <td>F</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_gender\n",
+              "2           4             TG\n",
+              "7           6              F"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 32
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QcuWZTtws7bQ"
+      },
+      "source": [
+        "## Q 9.3 \n",
+        "\n",
+        "Select 2nd to 5th row and 2nd to 4th col\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ywXOUc1as7hV",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 142
+        },
+        "outputId": "dd769bee-660f-44d6-f50a-b3dac3f3ca3a"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.iloc[2:5, 2:4]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>26</td>\n",
+              "      <td>TG</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>32</td>\n",
+              "      <td>F</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>29</td>\n",
+              "      <td>M</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_age student_gender\n",
+              "2           26             TG\n",
+              "3           32              F\n",
+              "4           29              M"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 33
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "v7FMefvHwOOP"
+      },
+      "source": [
+        "Note: Use loc for the questions below"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "U3QBSafHvtyU"
+      },
+      "source": [
+        "## Q 9.4\n",
+        "\n",
+        "Display the 4th record"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "bNyoq3Q2vt65",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 80
+        },
+        "outputId": "3cc738eb-1f95-4b20-e0b7-75b954d43eab"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.iloc[4:5]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Leticia</td>\n",
+              "      <td>29</td>\n",
+              "      <td>M</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "4           1      Leticia           29              M             EX"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 34
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "C_yEcZm0vuDR"
+      },
+      "source": [
+        "## Q 9.5 \n",
+        "\n",
+        "Select ONLY the student name for index = 6"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "AoaaD6rSvuIh",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "c1eaa568-dfe9-4281-bc9a-5f3c243f61f2"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.iloc[5]['student_name']"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            },
+            "text/plain": [
+              "'Roxane'"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 35
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "bkXi27mkvuO_"
+      },
+      "source": [
+        "# Q 10 Conditional Selection\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "o-UblmVmznSn"
+      },
+      "source": [
+        "## Q 10.1\n",
+        "\n",
+        "Print all students whose age is higher than or equal to 27"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "4V_XJWCPvuVG",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 235
+        },
+        "outputId": "664ecd98-7543-41ff-95c4-955ed562d0f1"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5[df_5['student_age'] > 27]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>10</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>45</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>5</td>\n",
+              "      <td>Stacy</td>\n",
+              "      <td>32</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Leticia</td>\n",
+              "      <td>29</td>\n",
+              "      <td>M</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>7</td>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>34</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>9</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>28</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>9</th>\n",
+              "      <td>3</td>\n",
+              "      <td>Linda</td>\n",
+              "      <td>35</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "1          10       Martin           45              F             EX\n",
+              "3           5        Stacy           32              F            NPP\n",
+              "4           1      Leticia           29              M             EX\n",
+              "5           7       Roxane           34              F            NPP\n",
+              "8           9        Erich           28              M             PP\n",
+              "9           3        Linda           35              F            NPP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 36
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "KEruBZpKzwVz"
+      },
+      "source": [
+        "## Q 10.2\n",
+        "\n",
+        "Print only the student names whose age is higher than 27"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "75qOqFoyzwbS",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "4766536e-8698-44d6-e26f-299552aadbc9"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5[df_5['student_age'] > 27]['student_name']"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1     Martin\n",
+              "3      Stacy\n",
+              "4    Leticia\n",
+              "5     Roxane\n",
+              "8      Erich\n",
+              "9      Linda\n",
+              "Name: student_name, dtype: object"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 37
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QtXQLJ-Azwic"
+      },
+      "source": [
+        "## Q 10.3\n",
+        "\n",
+        "Select records of all students whose age is higher than 27 and are males"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "KZYesAFXzwqg",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 111
+        },
+        "outputId": "9d109a2c-4488-4a18-bd03-0e8ce7660e10"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5[(df_5['student_age'] > 27) & (df_5['student_gender']=='M')]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Leticia</td>\n",
+              "      <td>29</td>\n",
+              "      <td>M</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>9</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>28</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "4           1      Leticia           29              M             EX\n",
+              "8           9        Erich           28              M             PP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 38
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Mw4jlJoD5htT"
+      },
+      "source": [
+        "## Q 10.4\n",
+        "\n",
+        "Select all student names which contains the letter r"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "MgsmvZ1Vzw13",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 142
+        },
+        "outputId": "372d6213-47f8-4e9c-bebc-91381726ed00"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.loc[df_5.student_name.str.contains('r')]\n",
+        "# employee_records.loc[employee_records.employee_name.str.contains('ar')]\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Araceli</td>\n",
+              "      <td>23</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>10</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>45</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>9</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>28</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "0           2      Araceli           23              M             PP\n",
+              "1          10       Martin           45              F             EX\n",
+              "8           9        Erich           28              M             PP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 39
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "IyRtuVL-5nRK"
+      },
+      "source": [
+        "## Q 10.5\n",
+        "\n",
+        "Select all student names which contains the letter r and are male"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hTdT_kgK51oY",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 111
+        },
+        "outputId": "f38d7720-abca-4ab8-d4d6-64d44415c18d"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.loc[(df_5.student_name.str.contains('r'))&(df_5.student_gender == 'M')]\n"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Araceli</td>\n",
+              "      <td>23</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>8</th>\n",
+              "      <td>9</td>\n",
+              "      <td>Erich</td>\n",
+              "      <td>28</td>\n",
+              "      <td>M</td>\n",
+              "      <td>PP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "0           2      Araceli           23              M             PP\n",
+              "8           9        Erich           28              M             PP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 40
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "546BxlYO6Jz5"
+      },
+      "source": [
+        "## Q 10.6\n",
+        "\n",
+        "Select all students whose name contains r or e (case insensitive) and are females\n",
+        "\n",
+        "Hinte: Use regex"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nS8WcNU96J6Y",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 142
+        },
+        "outputId": "366a4db2-a298-462b-f896-4c4b313092d5"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.loc[(df_5.student_name.str.contains('r|e|R|E'))&(df_5.student_gender == 'F')]"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>student_name</th>\n",
+              "      <th>student_age</th>\n",
+              "      <th>student_gender</th>\n",
+              "      <th>student_course</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>10</td>\n",
+              "      <td>Martin</td>\n",
+              "      <td>45</td>\n",
+              "      <td>F</td>\n",
+              "      <td>EX</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>7</td>\n",
+              "      <td>Roxane</td>\n",
+              "      <td>34</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>7</th>\n",
+              "      <td>6</td>\n",
+              "      <td>Jacquelyne</td>\n",
+              "      <td>27</td>\n",
+              "      <td>F</td>\n",
+              "      <td>NPP</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   student_id student_name  student_age student_gender student_course\n",
+              "1          10       Martin           45              F             EX\n",
+              "5           7       Roxane           34              F            NPP\n",
+              "7           6   Jacquelyne           27              F            NPP"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 41
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "7I3PWYdo4Ra2"
+      },
+      "source": [
+        "# Q11: Miscellaneous questions\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "XMBQJAuH4RdX"
+      },
+      "source": [
+        "## Q 11.1\n",
+        "\n",
+        "Get a list of students names from the data frame"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "-IVGkXoLs7Jx",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "eccc2e10-6466-43f4-a0de-4b0a56144fae"
+      },
+      "source": [
+        "# type your code below\n",
+        "list(df_5['student_name'])"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "['Araceli',\n",
+              " 'Martin',\n",
+              " 'Diann',\n",
+              " 'Stacy',\n",
+              " 'Leticia',\n",
+              " 'Roxane',\n",
+              " 'Venice',\n",
+              " 'Jacquelyne',\n",
+              " 'Erich',\n",
+              " 'Linda']"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 42
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "LCfU9Gnft3Aq"
+      },
+      "source": [
+        "## Q 11.2\n",
+        "\n",
+        "Get a dictionary of students names from the data frame"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "V_ezAsss4QMJ",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "8fcde1ea-2d3a-4147-8935-3c240a90d90c"
+      },
+      "source": [
+        "# type your code below\n",
+        "df_5.to_dict()"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{'student_age': {0: 23,\n",
+              "  1: 45,\n",
+              "  2: 26,\n",
+              "  3: 32,\n",
+              "  4: 29,\n",
+              "  5: 34,\n",
+              "  6: 24,\n",
+              "  7: 27,\n",
+              "  8: 28,\n",
+              "  9: 35},\n",
+              " 'student_course': {0: 'PP',\n",
+              "  1: 'EX',\n",
+              "  2: 'PP',\n",
+              "  3: 'NPP',\n",
+              "  4: 'EX',\n",
+              "  5: 'NPP',\n",
+              "  6: 'PP',\n",
+              "  7: 'NPP',\n",
+              "  8: 'PP',\n",
+              "  9: 'NPP'},\n",
+              " 'student_gender': {0: 'M',\n",
+              "  1: 'F',\n",
+              "  2: 'TG',\n",
+              "  3: 'F',\n",
+              "  4: 'M',\n",
+              "  5: 'F',\n",
+              "  6: 'TG',\n",
+              "  7: 'F',\n",
+              "  8: 'M',\n",
+              "  9: 'F'},\n",
+              " 'student_id': {0: 2, 1: 10, 2: 4, 3: 5, 4: 1, 5: 7, 6: 8, 7: 6, 8: 9, 9: 3},\n",
+              " 'student_name': {0: 'Araceli',\n",
+              "  1: 'Martin',\n",
+              "  2: 'Diann',\n",
+              "  3: 'Stacy',\n",
+              "  4: 'Leticia',\n",
+              "  5: 'Roxane',\n",
+              "  6: 'Venice',\n",
+              "  7: 'Jacquelyne',\n",
+              "  8: 'Erich',\n",
+              "  9: 'Linda'}}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 43
+        }
+      ]
+    }
+  ]
+}
