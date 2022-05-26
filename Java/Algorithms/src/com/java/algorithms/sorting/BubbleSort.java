@@ -2,9 +2,7 @@ package com.java.algorithms.sorting;
 
 public class BubbleSort {
 
-	
 	public static int[] bubbleSort(int[] arr) {
-		
 		
 		int size = arr.length;
 		for(int i=0; i<size-1; i++) {
@@ -18,9 +16,7 @@ public class BubbleSort {
 				printArray(arr);
 			}
 		}
-		
 		return arr;
-		
 	}
 	
 	/* Prints the array */
