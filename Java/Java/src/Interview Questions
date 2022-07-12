@@ -1,0 +1,118 @@
+In which paradigm of Java 8 falls-
+	1) Fails in object oriented programming
+	2) Functional programming language- 
+		Functional Interface - pure function, output only dependent on input parameters passed 
+		and not on the state of the object. This is achieved using lambda expressions.
+	3) Procedural programming language:
+	4) Logic programming language.
+
+
+What is MetaSpace? How does it differ from PermGen?
+	PermGen - Metadata information of classes was stored in PerGen before java 8. 
+	Permgen is fixed in size and can not be dynamically resized. 
+	It was contiguous Java Heap Memory.
+	
+	MetaSpace - Java 8 stores the metadata of classes in native memory called Metaspace. 
+		It is not a contiguousHeap memory and hence can be grown dynamically which helps 
+		to overcome the size constraints. This improves Garbage collection.
+
+Can a functional interface extend/inherit another interface?
+	A functional interface can not extend another interface because it may cause the 
+	functional interface to have more than one abstract method.
+
+Default Method: Why is it needed?
+	A Method in body of interface with predefined functionality.
+	They are introduced to have backward compatibility in case JDK modifies any interface.
+	In case new abstract methods are added to the interface, all classes implementing the
+	interface will break and will have to implement the new method. Adding Default method can
+	fix it.
+	With default method there will be no impact on the interface implementing classes. 
+	Default methods can be overridden if needed in implementation. 
+	Also, it does not qualify as synchronised or final. 
+	
+Static Method in interfaces - 
+	Can be used to define utility method. Similar to Static method is concrete classes.
+	
+What are some standard Java pre-defined functional interfaces?
+	Some pre-defined functional interfaces from previous versions of java are - 
+	1) Comparator
+	2) Comparable
+	3) Runnable
+	4) Callable
+	
+	Java 8 introduces interfaces like - Supplier, consumer, Predicate etc.
+	1) Function - to transform arguments in returnable value.
+	2) Predicate - To perform a test and return a boolean value.
+	3) Consumer - Accepts objects, no return type. This is to do a task.
+	4) Supplier - Do not accept a parameter but returns a value.
+	5) Operator - Top perform reduction type operation that accepts the same input types.
+	
+What is the lambda expression in Java and How does Lambda expression relate to a functional interface?
+	Lambda Expression can be passes as parameter to another method.
+	Lambda expression can be a standalone without belonging to a class.
+	
+Optional Class - 
+	Optional is a container type which may or may not contain value or one value. 
+	It is part of jav.util package. There are pre-defined methods like isPresent() - which returns
+	true if the value is present or else false and the method get(), which will return the value if it is present.
+
+What are advantages of using optional class?
+	1) It encapsulates optional values - null or not-null values, which helps in avoiding null chekcs
+	which results in better, readable, and robust code. It acts as a wrapper
+	around the object and returns an object instead of a value which can be used to
+	avoid run-time NullPointerExceptions
+	
+Streams - 
+	It is an abstraction to express data processing queries in a declarative way. 
+	A stream represents a sequence of data objects and serie4s of operations on that 
+	data is a data pipeline that is not related to java I/O streams does not hold 
+	any data permanently.
+	Flow - 
+	1) Source:
+		- A collection of an array.
+		- An I/O channel or an input device.
+		- A reactive source (eg comments i social media or tweets)
+		- A stream generator function or a static factory.
+		
+	2) Intermediate Operations & Terminal Operations
+		- Process streams
+		- Transform a stream into another stream.
+		- Are lazy and are no executes until a terminal operation is invoked.
+		- Does internal iteration of all source elements.
+		- Any number of operations can be chained in the processing pipeline.
+		- Operations are applied as per the defined order.
+		- Intermediate operations are mostly lambda functions.
+	
+	Common Intermediate operations - 
+	1) Filter(Predicate<T>) - Allows only a selective processing of elements in stream. 
+							It returns elements that are satisfying the supplied condition 
+							by the predicate. 
+	2) map(Function<T,R>) - Returns a new stream, transforming each of the elements by applying 
+			the supplied mapper function. 
+	3) distinct() - only passes elements to the next stage, not passed yet. (unique)
+	4) skip(long start) -  skip the initial elements the parameter index.
+	5) peek(Consumer) - Apply a consumer without modification to the stream.
+	6) flatMap(mapper) - Transform each element to a stream of it constituents elements 
+	and flatten all the stream to a single stream.
+	7) limit(long maxsize) - limit the stream size to maxsize.
+	
+	
+	Common Terminal Operations - 
+	collect() -collects single result from all elements of the stream sequence.
+	reduce() - produces a single result from all elements of the stream sequence
+		count() - Returns the number of elements on the stream
+		min() -  returns min element from the stream
+		max() - returns max
+	Search/Query operations - 
+		anyMAtch, noneMatch(), allMatch()
+		
+	Iterative Operations - forEach - foreachOrdered
+	
+	
+Difference between collections and streams - 
+ - Data structure holds all data elements where as no data is stored in streams, they have the capacity to process infinite elements on demand.
+ - External Iteration in collection where as internal iteration in Streams
+ - Collection can be processed any number of times where as stream can be traversed only once.
+ - Elements are easy to access in collection where as there is no direct way of accessing specific element
+ - Collection is a data store where as Stream is an API to process the data.	
+
