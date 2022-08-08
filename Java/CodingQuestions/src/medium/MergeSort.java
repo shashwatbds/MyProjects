@@ -33,7 +33,7 @@ public class MergeSort {
         int mid = left + (right - left) / 2;
         count += mergeSort(a, temp, left, mid);
         count += mergeSort(a, temp, mid + 1, right);
-        count += merge(a, temp, left, mid, right);
+       // count += mergeSort(a, temp, left, mid, right);
         return count;
     }
 }
