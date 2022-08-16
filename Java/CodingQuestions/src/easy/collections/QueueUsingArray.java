@@ -1,6 +1,6 @@
 package easy.collections;
 
-public class ImplementStackUsingArrays {
+public class QueueUsingArray {
 
 	private int head, tail, length = 0;
 	private static final int DEFAULT_CAPACITY = 200;
@@ -16,10 +16,11 @@ public class ImplementStackUsingArrays {
 		if(length ==0) {
 			return -1;
 		}
-		int rem = arr[tail];
+		int rem = arr[head];
+		for(int i=0; i<size();i++) {
+			arr[i] = arr[i+1];
+		}
 		arr[tail] = 0;
-		tail -=1;
-		length-=1;
 		System.out.println(rem);
 		return rem;
 	}
@@ -35,29 +36,29 @@ public class ImplementStackUsingArrays {
 	}
 
 	public static void main(String[] args) {
-		ImplementStackUsingArrays stack = new ImplementStackUsingArrays();
-		stack.printQueue();
-		stack.push(1);
-		stack.push(2);
-		stack.push(3);
-		stack.push(4);
-		stack.push(5);
-		stack.push(6);
-		stack.push(7);
-		stack.push(8);
-		stack.push(9);stack.push(10);
-		stack.printQueue();
-		stack.pop();
-		stack.pop();
-		stack.pop();
-		stack.pop();
-		stack.pop();
-		stack.pop();
-		stack.pop();
-		stack.pop();
-		stack.pop();
-		stack.pop();
-		stack.printQueue();
+		QueueUsingArray queue = new QueueUsingArray();
+		queue.printQueue();
+		queue.push(1);
+		queue.push(2);
+		queue.push(3);
+		queue.push(4);
+		queue.push(5);
+		queue.push(6);
+		queue.push(7);
+		queue.push(8);
+		queue.push(9);queue.push(10);
+		queue.printQueue();
+		queue.pop();
+		queue.pop();
+		queue.pop();
+		queue.pop();
+		queue.pop();
+		queue.pop();
+		queue.pop();
+		queue.pop();
+		queue.pop();
+		queue.pop();
+		queue.printQueue();
 	}
 
 }
