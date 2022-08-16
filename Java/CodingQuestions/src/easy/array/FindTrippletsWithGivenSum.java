@@ -2,7 +2,7 @@ package easy.array;
 
 import java.util.Arrays;
 
-public class FindTrippletsWithgivenSum {
+public class FindTrippletsWithGivenSum {
 
 	public static void main(String[] args) {
 
