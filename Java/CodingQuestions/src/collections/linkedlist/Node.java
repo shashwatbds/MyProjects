@@ -1,5 +1,7 @@
 package collections.linkedlist;
 
+import java.util.Objects;
+
 public class Node {
 
 	private Node next;
@@ -34,4 +36,23 @@ public class Node {
 	public String toString() {
 		return this.data;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(data, next);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Node other = (Node) obj;
+		return Objects.equals(data, other.data);
+	}
+	
+	
 }
