@@ -1,4 +1,4 @@
-package collections.linkedlist;
+package easy.map;
 
 import java.util.HashMap;
 

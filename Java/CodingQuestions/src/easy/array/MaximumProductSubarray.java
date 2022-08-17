@@ -39,8 +39,8 @@ public class MaximumProductSubarray {
 
 		int max=arr[0],min=arr[0];
 		int ans=arr[0];
-		for(int i=1; i<length; i++){
-			if(arr[i] < 0){
+		for(int i=1; i<length; i++) {
+			if(arr[i] < 0) {
 				int temp=max;
 				max=min;
 				min=temp;

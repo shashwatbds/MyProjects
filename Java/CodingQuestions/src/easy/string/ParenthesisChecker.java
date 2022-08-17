@@ -21,7 +21,8 @@ public class ParenthesisChecker {
 	}
 
 	private static boolean checkPerfectParanthesis(String string) {
-		if(string.length()%2!=0) {
+		
+		if(string.isEmpty() || string.length()%2!=0) {
 			return false;
 		}
 		boolean end = false;

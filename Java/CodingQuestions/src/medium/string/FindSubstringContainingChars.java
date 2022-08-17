@@ -1,9 +1,5 @@
 package medium.string;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 public class FindSubstringContainingChars {
 
 	public static void main(String[] args) {
@@ -27,7 +23,6 @@ public class FindSubstringContainingChars {
 				}
 			}
 			if(equals) return true;
-			
 		}
 		return false;
 	}

@@ -21,6 +21,8 @@ public class QueueUsingArray {
 			arr[i] = arr[i+1];
 		}
 		arr[tail] = 0;
+		length-=1;
+		tail = length-1;
 		System.out.println(rem);
 		return rem;
 	}

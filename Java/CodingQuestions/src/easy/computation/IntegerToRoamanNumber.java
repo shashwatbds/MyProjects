@@ -29,19 +29,16 @@ public class IntegerToRoamanNumber {
 		itr.IntegerToRoaman(1505);//MDV
 	}
 	private void IntegerToRoaman(int i) {
-//		Map<StringS, Integer> countMap = new HashMap<>();
 		StringBuilder number = new StringBuilder("");
 		int remainder = i;
 		int count = 0;
 		for(Entry<String, Integer> entry : mapping.entrySet()) {
 			count = remainder/entry.getValue();
 			remainder = remainder % entry.getValue();
-//			countMap.put(entry.getKey(), count);
 			for(int j =0; j<count;j++) {
 				number.append(entry.getKey());
 			}
 		}
-//		System.out.println(countMap);
 		System.out.println(number);
 	}
 
