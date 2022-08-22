@@ -1,6 +1,8 @@
 package com.designpatterns.creational.singleton;
 
-public class ThreadSafeSingleton {
+import java.io.Serializable;
+
+public class ThreadSafeSingleton implements Serializable{
 
 	private ThreadSafeSingleton() {}
 	
