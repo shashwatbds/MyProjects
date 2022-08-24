@@ -36,8 +36,8 @@ public class StringOperations {
 
 	private static void stringIsBlankOrEmpty() {
 		String str = "	";
-		System.out.println(str.isBlank());
-		System.out.println(str.isEmpty());
+		System.out.println(str.isBlank());// ignores spaces
+		System.out.println(str.isEmpty());// Space is valid char
 	}
 
 	private static void subString() {
@@ -81,6 +81,6 @@ public class StringOperations {
 //		System.out.println(str.stripIndent());
 		System.out.println(str.stripLeading());
 		System.out.println(str.stripTrailing());
-		System.out.println(str.trim());// 
+		System.out.println(str.trim());// same as strip
 	}
 }
