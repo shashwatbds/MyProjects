@@ -8,7 +8,7 @@ public class FindCharsInStringThatIsRepeatedNTimes {
 		find("Fibonaccci", 2);//i
 	}
 
-	private static void find(String string, int count) {
+	private static void find(final String string, final int count) {
 		int max = 0;
 		char maxChar = 0;
 		for(int i=0; i<string.toCharArray().length; i++) {
