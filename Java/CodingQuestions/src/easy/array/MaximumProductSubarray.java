@@ -20,12 +20,12 @@ public class MaximumProductSubarray {
 		int max = 0;
 		int start = 0; int end = 0;
 		for(int i=0; i<length-1; i++) {
-			int sum=arr[i];
+			int prod=arr[i];
 			for(int j=i+1; j<length; j++) {
-				sum*=arr[j];
+				prod*=arr[j];
 				//				System.out.println(arr[i]+" and sum is "+sum +"\n");
-				if(max < sum) {
-					max = sum;
+				if(max < prod) {
+					max = prod;
 					start = i;
 					end = j;
 					//					System.out.println("Highest product from index "+i+" to "+j+" and product is "+max);
