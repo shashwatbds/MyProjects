@@ -10,7 +10,6 @@ public class ProxyInternetAccess implements OfficeInternetAccess {
 		this.employeeName = employeeName;
 	}
 
-
 	@Override
 	public void grantInternetAccess() {
 		if(this.getRole(employeeName) > 4) {
