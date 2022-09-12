@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Node {
 
-	private Node next;
+	private Node next, previous;
 	private String data;
 	
 	public Node(String data) {
@@ -15,16 +15,30 @@ public class Node {
 		return next != null;
 	}
 	
+	public boolean hasPrevious() {
+		return previous !=null;
+	}
 	public Node next() {
 		return next;
+	}
+	
+	public Node previous() {
+		return previous;
 	}
 	
 	public Node getNext() {
 		return next;
 	}
+	public Node getPrevious() {
+		return previous;
+	}
 	public void setNext(Node next) {
 		this.next = next;
 	}
+	public void setPrevious(Node previous) {
+		this.previous = previous;
+	}
+	
 	public String getData() {
 		return data;
 	}

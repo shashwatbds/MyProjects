@@ -20,87 +20,72 @@ public class StreamsTest2 {
 
 	private static void test(List<Order> orders, List<Product> products) {
 
-		//1.ObtainList with category Books and price >100
-		List<Product> ps = products.stream()
-				.filter( p-> (p.getCategory().equals("Books") && p.getPrice() > 500))//intermediate operation
-				.collect(Collectors.toList()); // terminary operation
-		System.out.println("\nSolution 1:"+ps);
+		//1.ObtainList with category Books and price >300
+		orders.stream()
+		.filter(o -> o.getProducts().stream()
+				.allMatch(p-> p.getCategory().equals(StreamsData.BOOKS))
+				)
+		.flatMap(o-> o.getProducts().stream())
+		.filter(p->p.getPrice()>300)
+		.peek(System.out::println)
+		.collect(Collectors.toList());
 
 		//2. Get list of orders where Product category is baby
-		//		List<Order> os = orders.stream().
-		//		filter( o -> {
-		//			for(Product p : o.getProducts()) {
-		//				if(p.getCategory().equalsIgnoreCase("Baby"))
-		//					return true;
-		//				
-		//				break;
-		//			}
-		//			return false;
-		//		}).collect(Collectors.toList());
-		List<Order> os = orders.stream().
-				filter( o -> 
-				o.getProducts().stream().
-				anyMatch( p-> (p.getCategory().equalsIgnoreCase("Baby")))// can not use filter here since we need to have a terminal operation which returns boolean and filter returns a stream.
-						).collect(Collectors.toList());
-		os.forEach(System.out::println);
+		orders.stream()
+		.filter(o->o.getProducts().stream()
+				.allMatch(p->p.getCategory().equals(StreamsData.BABY)))
+		.peek(System.out::println)
+		.collect(Collectors.toList());
 
 		//3. Obtain a list of product with category = “Baby” and then apply 10% discount
-		List<Product> bps = products.stream().
-				filter(p -> p.getCategory().equalsIgnoreCase("Baby")).
-				map(p -> {
-					p.setPrice(p.getPrice()*0.9);
-					return p;
-				}).
-				collect(Collectors.toList());
-		System.out.println("\nSolution 3:"+bps);	
+		orders.stream()
+		.filter(o->o.getProducts().stream()
+				.allMatch(p->p.getCategory().equals(StreamsData.BABY)))
+		.flatMap(o->o.getProducts().stream())
+		.map(p-> {
+			p.setPrice(p.getPrice()*0.9);
+		return p;
+		})
+		.peek(System.out::println).collect(Collectors.toList());
 
 		//4.Obtain a list of products ordered by customer of tier 3 between 01-Feb-2021 and 01-Apr-2021
-		List<Product> ops  = orders.stream().
-				filter(o -> (o.getCustomer().getTier()==3)).
-				filter(o-> (o.getOrderDate().compareTo(LocalDate.of(2022,01,10)) > 0)).
-				filter(o-> (o.getOrderDate().compareTo(LocalDate.of(2022,02,15)) < 0)).
-				flatMap(o -> o.getProducts().stream()).
-				distinct().
-				collect(Collectors.toList());
-		System.out.println("\nSolution 4:"+ops);
-
+		orders.stream()
+		.filter(o-> o.getCustomer().getTier()==3)
+		.filter(o-> o.getOrderDate().compareTo(LocalDate.of(2021, 01, 01)) > 0)
+		.filter(o-> o.getOrderDate().compareTo(LocalDate.of(2021, 01, 31)) < 0)
+		.collect(Collectors.toList());
 
 		//5. Get the cheapest products of “Books” category
-		Optional<Product> cb = products.stream().
-				filter(p ->  p.getCategory().equalsIgnoreCase("books")).
-				min(Comparator.comparing(Product::getPrice));
-		System.out.println("\nSolution 5:"+cb);	
+		System.out.println("5. Get the cheapest products of “Books” category\n");
+		orders.stream()
+		.flatMap(o->o.getProducts().stream())
+		.filter(p->p.getCategory().equals(StreamsData.BOOKS))
+		.sorted(Comparator.comparing(Product::getPrice))
+		.limit(1)
+		.peek(System.out::println)
+		.collect(Collectors.toList());
 
 		//6. get two most recently placed orders
-		List<Order> rps = orders.stream().
-				sorted(Comparator.comparing(Order::getOrderDate).reversed()).
-				limit(2).
-				collect(Collectors.toList());
-		System.out.println("\nSolution 6:"+rps);
-
+		System.out.println("6. get two most recently placed orders\n");
+		orders.stream()
+		.sorted(Comparator.comparing(Order::getOrderDate).reversed())
+		.limit(2)
+		.peek(System.out::println)
+		.collect(Collectors.toList());
+		
 		//7. Get a list of orders which were ordered on 11-Mar-2021, log the order records to the console and then return its product list
-		List<Product> ps1 = orders.stream().
-				filter(o -> o.getOrderDate().compareTo(LocalDate.of(2022, 03, 11)) == 0).
-				peek(o -> System.out.println(o)).
-				flatMap( o -> o.getProducts().stream()).
-				collect(Collectors.toList());
-		System.out.println("\nSolution 7:"+ps1);
 
 		//8. Calculate total lump sum of all orders placed in Feb 2021
-		double sum = orders.stream().
-				filter(o-> (o.getOrderDate().compareTo(LocalDate.of(2022,02,01)) > 0)).
-				filter(o-> (o.getOrderDate().compareTo(LocalDate.of(2022,04,01)) < 0)).
-				peek(o -> System.out.println(o)).
-				flatMap(o -> o.getProducts().stream()).
-				peek( p-> System.out.println(p)).
-				mapToDouble(p -> p.getPrice()).
-				sum();
-		System.out.println("\nSolution 8:"+sum);
-
+		System.out.println("8. Calculate total lump sum of all orders placed in Feb 2021\n");
+		double sum = orders.stream()
+		.filter(o->o.getOrderDate().compareTo(LocalDate.of(2021, 02, 28))>0)
+		.filter(o->o.getOrderDate().compareTo(LocalDate.of(2021, 04, 01))<0)
+		.flatMap(o->o.getProducts().stream())
+		.mapToDouble(p->p.getPrice())
+		.peek(System.out::println)
+		.sum();
+		System.out.println(sum);
 		//9. Obtain a data map with order id and order’s product count
-		Map<Integer, Integer> pm = orders.stream().
-				collect(Collectors.toMap(o -> o.getId(), o -> o.getProducts().size()));
-		System.out.println("\nSolution 9:"+pm);
 
 	}
 }

@@ -2,7 +2,9 @@ package com.designpatterns.creational.singleton;
 
 import java.io.Serializable;
 
-public class ThreadSafeSingleton implements Serializable{
+public class ThreadSafeSingleton implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private ThreadSafeSingleton() {}
 	

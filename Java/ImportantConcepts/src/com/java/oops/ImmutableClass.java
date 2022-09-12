@@ -1,24 +1,21 @@
 package com.java.oops;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public final class ImmutableClass {
 
-	private int property1;
-	private int property2;
+	private final int property1;
+	private final int property2;
 	
-	private List<Integer> sampleList;
+	private final List<Integer> sampleList;
 	
-	public ImmutableClass(int property1, int property2) {
+	public ImmutableClass(int property1, int property2, List<Integer> sampleList) {
 		super();
 		this.property1 = property1;
 		this.property2 = property2;
-		this.sampleList = new ArrayList<Integer>();
-	}
-
-	public static void main(String[] args) {
-
+		this.sampleList = new ArrayList<>(sampleList);//New in Constructor
 	}
 
 	public int getProperty1() {
@@ -30,9 +27,18 @@ public final class ImmutableClass {
 	}
 
 	public List<Integer> getSampleList() {
-		return sampleList;
+		return new ArrayList<>(sampleList);
 	}
 	
-	
+	public static void main(String[] args) {
+		List<Integer> list = new ArrayList<>();
+		ImmutableClass obj = new ImmutableClass(1,2,Collections.synchronizedList(list));
+		list.add(3);
+		System.out.println(obj.getSampleList().size());
+		obj.getSampleList().add(4);
+		System.out.println(obj.getSampleList().size());
+
+		
+	}
 
 }

@@ -11,7 +11,7 @@ public class Order {
 	private String status;
 	private Customer customer;
 	
-	Set<Product> products;
+	private Set<Product> products;
 	
 	public Order(Integer id, LocalDate orderDate, LocalDate deliveryDate, String status, Customer customer,
 			Set<Product> products) {

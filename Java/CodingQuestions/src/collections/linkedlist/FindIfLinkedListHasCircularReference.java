@@ -22,9 +22,7 @@ public class FindIfLinkedListHasCircularReference {
 			current = current.next();
 		}
 		System.out.println(hasCircularReference(head));
-		System.out.println(hasCircularReference(FindMiddleOfLinkedList.addToLinkedList(10)));
-
-
+//		System.out.println(hasCircularReference(FindMiddleOfLinkedList.addToLinkedList(10)));
 	}
 
 	public static Node addToLinkedList(int n) {

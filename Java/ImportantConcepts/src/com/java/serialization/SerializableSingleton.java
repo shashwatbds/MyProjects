@@ -19,7 +19,7 @@ public class SerializableSingleton implements Serializable{
 	 */
 	private Object readResolve() throws ObjectStreamException {
 		System.out.println("in readResolve()");
-		return INSTANCE;
+		return SerializableSingleton.getInstance();
 	}
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
