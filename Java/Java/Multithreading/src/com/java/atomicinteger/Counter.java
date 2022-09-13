@@ -1,5 +1,8 @@
 package com.java.atomicinteger;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Counter {
@@ -8,21 +11,18 @@ public class Counter {
 	private int num = 0;
 	
 	public void increment() {
-		System.out.println("Normal Int "+num++);
-		System.out.println("Atomic Integer "+count.getAndIncrement());
+		num++;
+		count.getAndIncrement();
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
 		final Counter counter = new Counter();
-		
-		for(int i=0; i<100; i++) {
-			new Thread(new Runnable() {
-				@Override
-				public void run() {
-					counter.increment();
-				}
-			}).start();
-			//Thread.sleep(1000);
+		ExecutorService es = Executors.newFixedThreadPool(10);
+		for(int i=0; i<1000; i++) {
+			es.submit(()->counter.increment());
 		}
+		es.shutdown();
+		es.awaitTermination(10, TimeUnit.SECONDS);
+		System.out.println("Normal Int: "+counter.num+" Atomic Int: "+counter.count);
 	}
 }

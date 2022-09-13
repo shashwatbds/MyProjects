@@ -25,11 +25,11 @@ public class Customer implements Serializable{
 		this.id = id;
 		this.name = name;
 		this.tier = tier;
-		System.out.println("Constructor Called");
+//		System.out.println("Constructor Called");
 	}
 	
 	public Customer() {
-		System.out.println("Constructor Called");
+//		System.out.println("Constructor Called");
 	}
 	public Integer getId() {
 		return id;
