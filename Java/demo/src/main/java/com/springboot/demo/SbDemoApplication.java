@@ -18,7 +18,7 @@ public class SbDemoApplication {
 	
 	@Bean
 	public FilterRegistrationBean<LoggingFilter2> loggingFilter() {
-	 
+	      
 		FilterRegistrationBean<LoggingFilter2> registrationBean = new FilterRegistrationBean<>();
 		registrationBean.setFilter(new LoggingFilter2());
 		registrationBean.addUrlPatterns("/entity1/*");
