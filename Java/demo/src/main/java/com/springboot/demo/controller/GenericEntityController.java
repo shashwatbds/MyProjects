@@ -38,5 +38,10 @@ public class GenericEntityController {
 		return entityList.stream().filter(entity -> entity.getId().equals(id)).findFirst().get();
 				
 	}
+	
+	@RequestMapping("entity1/all")
+	public List<GenericEntity> findAll1(){
+		return entityList;
+	}
 
 }

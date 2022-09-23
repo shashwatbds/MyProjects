@@ -1,14 +1,19 @@
 package com.springboot.demo.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class GenericEntity {
 
+	@Id
 	private Long id;
-	private String value;
+	private String val;
 	
-	public GenericEntity(Long id, String value) {
+	public GenericEntity(Long id, String val) {
 		super();
 		this.id = id;
-		this.value = value;
+		this.val = val;
 	}
 	public Long getId() {
 		return id;
@@ -16,11 +21,11 @@ public class GenericEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getValue() {
-		return value;
+	public String getVal() {
+		return val;
 	}
-	public void setValue(String value) {
-		this.value = value;
+	public void setVal(String val) {
+		this.val = val;
 	}
 	
 	

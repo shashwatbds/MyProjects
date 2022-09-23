@@ -9,20 +9,15 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
-
-@Component
-@Order(2)
-public class LoggingFilter implements Filter{
+public class LoggingFilter2 implements Filter{
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		System.out.println("Starting a logging for req: "+req.getRequestURI());
+		System.out.println("####Starting a logging for req: "+req.getRequestURI());
 		chain.doFilter(request, response);
-		System.out.println("Commiting a logging for req: "+req.getRequestURI());		
+		System.out.println("####Commiting a logging for req: "+req.getRequestURI());		
 	}
 
 }

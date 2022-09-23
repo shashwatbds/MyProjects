@@ -24,7 +24,7 @@ public class SpringBootJPATest {
 		GenericEntity genericEntity = genericEntityRepository.save(new GenericEntity(1l, "test"));
 		GenericEntity foundEntity = genericEntityRepository.findById(genericEntity.getId()).get();
 		assertNotNull(foundEntity);
-		assertEquals(genericEntity.getValue(), foundEntity.getValue());
+		assertEquals(genericEntity.getVal(), foundEntity.getVal());
 	}
 	
 
