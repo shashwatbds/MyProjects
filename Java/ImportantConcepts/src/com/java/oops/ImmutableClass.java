@@ -6,7 +6,7 @@ import java.util.List;
 
 public final class ImmutableClass {
 
-	private final int property1;
+	private final int property1;// properties must be private final
 	private final int property2;
 	
 	private final List<Integer> sampleList;
@@ -15,7 +15,7 @@ public final class ImmutableClass {
 		super();
 		this.property1 = property1;
 		this.property2 = property2;
-		this.sampleList = new ArrayList<>(sampleList);//New in Constructor
+		this.sampleList = new ArrayList<>(sampleList);//New in Constructor - Deep copy - Collections.unmodifiableList
 	}
 
 	public int getProperty1() {
@@ -32,7 +32,8 @@ public final class ImmutableClass {
 	
 	public static void main(String[] args) {
 		List<Integer> list = new ArrayList<>();
-		ImmutableClass obj = new ImmutableClass(1,2,Collections.synchronizedList(list));
+		ImmutableClass obj = new ImmutableClass(1,2,list);
+
 		list.add(3);
 		System.out.println(obj.getSampleList().size());
 		obj.getSampleList().add(4);

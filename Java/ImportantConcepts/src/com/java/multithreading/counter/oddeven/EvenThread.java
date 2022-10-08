@@ -14,7 +14,7 @@ public class EvenThread extends Thread{
 	@Override
 	public void run() {
 		int evenNumber = 2;
-		while(evenNumber<limit) {
+		while(evenNumber<=limit) {
 			printer.printEven(evenNumber);
 			evenNumber+=2;
 		}

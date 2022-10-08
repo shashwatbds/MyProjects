@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 public class CounterWithSynchronizationBlock implements Runnable {
 
-	private static int counter = 0;
+	private int counter = 0;
     private static final int limit = 1000;
     private static final int threadPoolSize = 5;
     private static final Object lock = new Object();

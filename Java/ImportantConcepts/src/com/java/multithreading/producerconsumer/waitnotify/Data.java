@@ -4,7 +4,7 @@ public class Data {
 
 	private String packet;
 
-	//True if reciever should wait
+	//True if receiver should wait
 	//False if sender should wait
 	private boolean transfer = true;
 

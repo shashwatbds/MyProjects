@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CounterWithAtomicInteger implements Runnable {
 
 	private AtomicInteger counter = new AtomicInteger(0);
-	private static final int limit = 1000;
+	private static final int limit = 100;
     private static final int threadPoolSize = 5;
 	public Object object = new Object();
 

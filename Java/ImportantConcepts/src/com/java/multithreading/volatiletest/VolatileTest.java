@@ -1,4 +1,4 @@
-package com.java.multithreading.semaphore;
+package com.java.multithreading.volatiletest;
 
 public class VolatileTest implements Runnable{
 
