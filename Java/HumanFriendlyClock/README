@@ -1,0 +1,10 @@
+Run Instructions:
+1) Rest Service
+	- Run the springboot project. Class - com.lloyds.clock.HumanFriendlyClock.HumanFriendlyClockApplication
+	- Sample URL - localhost:8080/clock/?time=01:30 or localhost:8080/clock/
+	
+2) Command Line Program:
+	- Command Line program can be using shell script -  humanFriendlyClock.sh
+	- Steps to run - 
+		- Extract HumanFriendlyCommandLine.zip
+			- contents of the file
