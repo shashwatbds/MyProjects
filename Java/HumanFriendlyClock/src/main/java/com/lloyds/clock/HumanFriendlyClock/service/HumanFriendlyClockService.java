@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class HumanFriendlyClockService {
 
-    private Logger logger = LoggerFactory.getLogger(HumanFriendlyClockService.class);
+	private Logger logger = LoggerFactory.getLogger(HumanFriendlyClockService.class);
 
-    private static final String TIME_DELIMETER = ":";
+	private static final String TIME_DELIMETER = ":";
 
 	public String getHumanReadableTime(String time) {
 		if(Objects.nonNull(time)) {//In case input is received from client.
@@ -29,7 +29,7 @@ public class HumanFriendlyClockService {
 			return getCurrentTimeInHumanFriendlyFormat();
 		}
 	}
-	
+
 	/**
 	 * Get current time and return human readable format in text.
 	 * */
@@ -44,21 +44,21 @@ public class HumanFriendlyClockService {
 	private String getTimeInHumanFriendlyFormat(int hour, int minutes) {
 
 		String textualNumbers[] = {"one", "two", "three", "four",
-                "five", "six", "seven", "eight", "nine",
-                "ten", "eleven", "twelve", "thirteen",
-                "fourteen", "fifteen", "sixteen", "seventeen",
-                "eighteen", "nineteen", "twenty", "twenty one",
-                "twenty two", "twenty three", "twenty four",
-                "twenty five", "twenty six", "twenty seven",
-                "twenty eight", "twenty nine", "thirty",
-            };
-		
+				"five", "six", "seven", "eight", "nine",
+				"ten", "eleven", "twelve", "thirteen",
+				"fourteen", "fifteen", "sixteen", "seventeen",
+				"eighteen", "nineteen", "twenty", "twenty one",
+				"twenty two", "twenty three", "twenty four",
+				"twenty five", "twenty six", "twenty seven",
+				"twenty eight", "twenty nine", "thirty",
+		};
+
 		int effectiveHour = hour;
 		effectiveHour = getEffectiveHourValue(hour, effectiveHour);
-		
+
 		int effectiveMinutes = minutes;
 		effectiveMinutes = getEffectiveMinuteValue(minutes, effectiveMinutes);
-		
+
 		if (minutes == 0) { 
 			return formatOutput(textualNumbers[effectiveHour] + " o' clock ");
 		}
@@ -68,11 +68,11 @@ public class HumanFriendlyClockService {
 
 		else if (minutes > 30)
 			return formatOutput(textualNumbers[effectiveMinutes] + " to " +    
-			textualNumbers[(effectiveHour+1)]);
-		
+					textualNumbers[(effectiveHour+1)]);
+
 		else  
 			return formatOutput(textualNumbers[effectiveMinutes] + " past " +    
-			textualNumbers[(effectiveHour)]);
+					textualNumbers[(effectiveHour)]);
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class HumanFriendlyClockService {
 		}
 		return effectiveHour;
 	}
-	
+
 	/**
 	 * Capitalise the first character of the output  
 	 * */
@@ -110,6 +110,15 @@ public class HumanFriendlyClockService {
 	 * Check if input time is in hh:mm format.
 	 * */
 	private boolean validateInput(String time) {
-		return time.split(TIME_DELIMETER).length==2;
+		boolean isValid = false;
+		String[] timeInput = time.split(TIME_DELIMETER);
+		if(timeInput.length==2) {
+			if(timeInput[0].length() < 3 && Integer.parseInt(timeInput[0]) > 0 && Integer.parseInt(timeInput[0]) < 24) {
+				if(timeInput[1].length() < 3  && Integer.parseInt(timeInput[1]) > 0 &&  Integer.parseInt(timeInput[1]) < 60) {
+					isValid=true;
+				}
+			}
+		}
+		return isValid;
 	}
 }
