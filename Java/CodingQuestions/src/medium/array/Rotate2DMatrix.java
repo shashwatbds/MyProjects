@@ -39,8 +39,8 @@ public class Rotate2DMatrix {
 		for(int i=0; i< (n+1)/2; i++) {
 			for(int j=0; j<n/2; j++) {
 				int temp = matrix[n-1-j][i];// save [2,0] in temp
-				matrix[n-1-j][i] = matrix[n-1-i][n-1-j];// assign [2,0] with value at [n-1-i][n-j-1]
-				matrix[n-1-i][n-1-j] = matrix[j][n-1-i];
+				matrix[n-1-j][i] = matrix[n-1-i][n-1-j];// assign [2,0] with value at [n-1-i][n-1-j]
+				matrix[n-i-1][n-1-j] = matrix[j][n-i-1];// assign [ 
 				matrix[j][n-1-i] = matrix[i][j];
 				matrix[i][j] = temp;
 			}
