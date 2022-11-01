@@ -12,9 +12,8 @@ public class Producer implements Runnable {
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 
-		for(int i=0; i<4; i++) {
+		for(int i=0; i<400; i++) {
 			try {
 				this.bq.put(i);
 				System.out.println("Produced - "+i);

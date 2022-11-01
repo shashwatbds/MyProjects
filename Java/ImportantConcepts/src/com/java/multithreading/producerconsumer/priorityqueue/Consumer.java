@@ -14,9 +14,8 @@ public class Consumer implements Runnable {
 	}
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		//Take numbers from the buffer and print them, if the last number taken is 4 then stop
-		while(taken!=4) {
+		while(taken!=400) {
 			try {
 				taken = this.bq.take();
 				System.out.println(taken+" Consumed by - "+Thread.currentThread().getName());
