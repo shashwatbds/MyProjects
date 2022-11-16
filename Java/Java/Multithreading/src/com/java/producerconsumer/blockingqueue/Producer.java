@@ -13,7 +13,7 @@ public class Producer extends Thread {
 
 	@Override
 	public void run() {
-		for(int i=0; i<=4; i++) {
+		for(int i=0; i<=40; i++) {
 			try {
 				queue.put(i);
 				System.out.println("Produced : "+i);

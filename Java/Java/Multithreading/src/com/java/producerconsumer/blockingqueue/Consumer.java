@@ -15,7 +15,7 @@ public class Consumer extends Thread {
 	@Override
 	public void run() {
 
-		while(taken!=4){
+		while(taken!=40){
 			try {
 				taken = queue.take();
 				System.out.println("Consumer :"+taken);

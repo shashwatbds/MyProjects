@@ -23,7 +23,7 @@ public class SingletonWithoutThreadSafety implements Serializable{
     }
     
     public Object readResolve() throws OperationNotSupportedException { 
-    	// prevent breaking singleton using deserialization.
+    	// prevent breaking singleton using deserialisation.
     	//has to return Object rather than SingletonWithoutThreadSafety
     	return SingletonWithoutThreadSafety.getInstance();
     }
