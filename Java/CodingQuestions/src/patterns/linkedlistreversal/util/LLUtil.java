@@ -15,11 +15,11 @@ public class LLUtil {
         node.next.next.next.next.next.next = new LinkedListNode(3);// 4 -> 6 -> 7 -> 1-> 5 -> 8 -> 3 -> NULL
         node.next.next.next.next.next.next.next = new LinkedListNode(2);// 4 -> 6 -> 7 -> 1-> 5 -> 8 -> 3 -> 2 -> NULL
 
-        System.out.println("The Linked list before reversal is: ");
         return node;
     }
 
     public static void printList(LinkedListNode node) {
+        System.out.println("\nThe Linked list is: ");
         while (node != null){
             System.out.print(node.val + " ");
             node = node.next;

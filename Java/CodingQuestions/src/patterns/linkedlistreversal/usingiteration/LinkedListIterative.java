@@ -7,8 +7,7 @@ import patterns.linkedlistreversal.util.LLUtil;
  * Approach -
  * 1. Take 3 pointers (previous, next and Current)
  * 2. Iterate through the linked list.
- *      - save the next node
- *      - swap the change the next node to previous and then moveto next node.
+ *      - for each node set the current previous node as the next node.
  * */
 public class LinkedListIterative {
 
