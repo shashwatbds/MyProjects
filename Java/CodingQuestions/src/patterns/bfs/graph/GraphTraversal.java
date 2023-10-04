@@ -5,6 +5,10 @@ import patterns.bfs.graph.model.Graph;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ * Time Complexity: O(V+E), where V is the number of nodes and E is the number of edges.
+ * Auxiliary Space: O(V)
+ * */
 public class GraphTraversal {
 
     public static void breadthFirstSearch(Graph graph, int s) { // BFS from a given source
