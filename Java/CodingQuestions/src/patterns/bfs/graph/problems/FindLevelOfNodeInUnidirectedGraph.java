@@ -22,23 +22,26 @@ public class FindLevelOfNodeInUnidirectedGraph {
 
         /**Preparation begins*/
         int maxVertex = 0;
+        // 1. Find number of vertices.
         for (int[] it : edges) {
             maxVertex = Math.max(maxVertex, Math.max(it[0], it[1]));
         }
 
-        // Creating adjacency list
+        // 2. Creating adjacency list
         ArrayList<Integer>[] adj = new ArrayList[maxVertex + 1];//why +1?
-
         for (int i = 0; i <= maxVertex; i++) {
             adj[i] = new ArrayList<>();
         }
 
-        // creating adjacency list
+        // 3. Adding elements to the adjacency list
         for(int i=0; i< edges.length; i++) {
+            //We have list of edges, hence we can add each node of the edges in each others adjacency list.
+            //Each element's adjacency list will be at same index in adjacency array as the integer.
             adj[edges[i][0]].add(edges[i][1]);
             adj[edges[i][1]].add(edges[i][0]);
         }
 
+        // If X is greater than max Vertex that means the passed element does not exist in the graph
         if(X > maxVertex || adj[X].size() ==0) {
             return -1;
         }

@@ -13,6 +13,7 @@ public class MinimumJumpsToReachEndOfAnArray {
         int n = arr.length;
         /**
          * Prepare index Map
+         * This index map stores the each number and the ilst of indexes the number exists at.
          * */
         Map<Integer, List<Integer>> indexMap = new HashMap<>();
         for(int i=0; i< n; i++) {
