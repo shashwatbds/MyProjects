@@ -1,4 +1,4 @@
-package patterns.bfs.graph.problems;
+package patterns.bfs.graph.problems.bfs.medium;
 
 import java.util.*;
 

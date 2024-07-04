@@ -1,4 +1,4 @@
-package patterns.bfs.graph.problems;
+package patterns.bfs.graph.problems.bfs.easy;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -28,7 +28,7 @@ public class FindLevelOfNodeInUnidirectedGraph {
         }
 
         // 2. Creating adjacency list
-        ArrayList<Integer>[] adj = new ArrayList[maxVertex + 1];//why +1?
+        ArrayList<Integer>[] adj = new ArrayList[maxVertex + 1];//why +1 - to avoid index out of bounds and null pointer at line 45?
         for (int i = 0; i <= maxVertex; i++) {
             adj[i] = new ArrayList<>();
         }
