@@ -4,6 +4,11 @@ import collections.binarytree.Node;
 
 import java.util.*;
 
+
+/**
+ * n the number of nodes and c the number of connections of the graph
+ * the complexity of the overall algorithm will be O(c). Otherwise, it’ll be O(n).
+ * */
 public class GraphNode<T> {
 
     private T t;

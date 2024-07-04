@@ -4,6 +4,9 @@ import java.util.ArrayDeque;
 import java.util.Optional;
 import java.util.Queue;
 
+/**
+ * if n is the number of nodes in the tree, the time complexity of the algorithm will be O(n).
+ * */
 public class TreeNode<T> {
 
     private TreeNode<T> left;
