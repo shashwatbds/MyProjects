@@ -39,7 +39,7 @@ public class TwoSum {
         }
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start, finish).toMillis();
-        System.out.println("time taken to execute "+timeElapsed);
+        System.out.println("Time taken to execute efficient "+timeElapsed);
         return result;
     }
 
@@ -57,13 +57,13 @@ public class TwoSum {
 
         System.out.println("\n\nEfficient Solution\n\n");
 
-        result = obj.twoSum(new int[]{2,7,11,15},9);
+        result = obj.twoSumEfficient(new int[]{2,7,11,15},9);
         System.out.println(result[0] + " "+result[1]);
 
-        result = obj.twoSum(new int[]{3,2,4},6);
+        result = obj.twoSumEfficient(new int[]{3,2,4},6);
         System.out.println(result[0] + " "+result[1]);
 
-        result = obj.twoSum(new int[]{3,3},6);
+        result = obj.twoSumEfficient(new int[]{3,3},6);
         System.out.println(result[0] + " "+result[1]);
     }
 }
