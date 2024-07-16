@@ -2,6 +2,7 @@ package org.example.blind75.easy;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,11 +31,13 @@ public class TwoSum {
     }
 
     private int[] getSum(int[] arr, int target) {
+        //Time complexity - O(n) - only one loop
+        //Space complexity - O(n) - we will have to add n-1 elements in worst case in hashmap.
 
         Instant start = Instant.now();
         int[] result = {-1, -1};
         Map<Integer, Integer> valueIdxMap = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {// n time complexity
             if (valueIdxMap.containsKey(target - arr[i])) {
                 result[0] = i;
                 result[1] = valueIdxMap.get(target - arr[i]);
@@ -50,12 +53,13 @@ public class TwoSum {
     }
 
     private int[] getSumBruteForce(int[] arr, int target) {
-
+        //Time complexity - O(n2) - two loops
+        // Space Complexity - O(1) - no extra space needed.
         Instant start = Instant.now();
         int[] result = {-1, -1};
 
-        for(int i =0; i<arr.length-1; i++) {
-            for(int j=1; j< arr.length; j++) {
+        for(int i =0; i<arr.length-1; i++) {// n complexity
+            for(int j=1; j< arr.length; j++) {// n complexity
                 if(arr[i] + arr[j] == target) {
                     result[0] = i;
                     result[1] = j;
