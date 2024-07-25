@@ -21,10 +21,10 @@ public class ClimbingSteps {
         if(n == 1) {
             return 1;
         }
-        int one = 1, two = 2;
-        for(int i = 3; i<=n; i++) {
+        int one = 1, two = 2;//Representing number of way we can reach 1st stair and second stair respectively, this will never change
+        for(int i = 3; i<=n; i++) {// We will start calculating the number of ways to reach remaining steps from step number 3 onwards.
 
-            int total = one + two;
+            int total = one + two; //The number of ways we can reach ith step is the sum of number of ways we can reach i-1 step and i-2 steps.
             one = two;
             two = total;
         }
