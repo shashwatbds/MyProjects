@@ -1,5 +1,6 @@
 package org.example.blind75.medium;
 
+/***Solution based on two pointer solution*/
 public class MinimumInSortedRotatedArray {
 
     //Solve in O(logn) - as soon as we get log(n) complexity we know this will be solved by binary search.

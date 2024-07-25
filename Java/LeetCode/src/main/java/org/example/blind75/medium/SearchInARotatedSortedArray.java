@@ -1,5 +1,8 @@
 package org.example.blind75.medium;
 
+/**
+ * Solution based on two pointer solution
+ * */
 public class SearchInARotatedSortedArray {
 
     public static void main(String[] args) {

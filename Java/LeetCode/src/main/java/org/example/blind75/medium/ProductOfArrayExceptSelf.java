@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /***
  * Uses Kadane's algorithm, dynamic programming.
+ * Uses prefix and postfix array
  * */
 public class ProductOfArrayExceptSelf {
 

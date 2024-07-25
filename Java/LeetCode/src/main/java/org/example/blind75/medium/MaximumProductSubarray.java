@@ -7,9 +7,9 @@ public class MaximumProductSubarray {
 
     public static void main(String[] args) {
         MaximumProductSubarray obj = new MaximumProductSubarray();
-//        System.out.println(obj.maxProduct(new int[]{2,3,-2,4}));
-//        System.out.println(obj.maxProduct(new int[]{-2,0,-1}));
-//        System.out.println(obj.maxProduct(new int[]{-2,3,-4}));
+        System.out.println(obj.maxProduct(new int[]{2,3,-2,4}));
+        System.out.println(obj.maxProduct(new int[]{-2,0,-1}));
+        System.out.println(obj.maxProduct(new int[]{-2,3,-4}));
         System.out.println(obj.maxProduct(new int[]{0,10,10,10,10,10,10,10,10,10,-10,10,10,10,10,10,10,10,10,10,0}));
     }
 
