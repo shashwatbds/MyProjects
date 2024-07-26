@@ -29,6 +29,10 @@ public class TwoSum {
         System.out.println(target[0] + " " + target[1]);
     }
 
+    /**
+     * We can solve this in one loop by check for each iteration
+     * This is also a dynamic programming solution since we have visited a node ( and saved in map ) then for each upcoming nodes all we have to find is if we have already visited target - current value
+     * */
     private int[] getSum(int[] arr, int target) {
         //Time complexity - O(n) - only one loop
         //Space complexity - O(n) - we will have to add n-1 elements in worst case in hashmap.

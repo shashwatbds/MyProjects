@@ -2,7 +2,10 @@ package org.example.blind75.easy;
 
 /**
  * This is classic dynamic programming problem.
- * For each step we will save the number of routes possible at each stair and we can avoid recalculation everytime.
+ * For each step we will save the number of routes possible at each step, with this we can avoid recalculation everytime.
+ * Logic: Why this is a dynamic problem?
+ *          - number of ways to reach first step is the sum of number of ways to reach i-1 and i-2 step
+ *          - number of ways to reach first step is 1 and number of ways to reach second step is 2, we will build on this one.
  * In this manner we will be able to have time complexity of O(n)
  * Brute force method will be recursion. Time complexity will be 2^n since for each node we will have two different options, 1 step or 2 steps.
  * */

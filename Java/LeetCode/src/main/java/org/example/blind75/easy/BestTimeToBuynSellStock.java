@@ -13,6 +13,10 @@ public class BestTimeToBuynSellStock {
 
     /**
      * We have to find the curr minimum and the next maximum after the current minimum in this case to find maximum profit.
+     * Target: Max profit will always be between highest and lowest number in the array,
+     *          so you will iterate once and find min number and keep finding difference between the cur min and the curr item in the array.
+     *
+     *          Pitfall: We can't just find the min and max number in an array since we do not want the min number to exits after the max number, this way we won't make profit.
      * */
     public int maxProfit(int[] prices) {
 
