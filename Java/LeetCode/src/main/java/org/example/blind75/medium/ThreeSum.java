@@ -32,13 +32,17 @@ public class ThreeSum {
             }
         });
     }
+
+    /**
+     * Important: The only way we can find a triplet with sum 0 is by having a negative number in the triplet if we don't have that there is no point iterating forward.
+     * */
     public List<List<Integer>> threeSum(int[] nums) {
 
         Arrays.sort(nums);// Sorting an array
         List<List<Integer>> result = new ArrayList<>();
 
-        for(int i=0; i < nums.length && nums[i] <= 0; i++) {// Important: The only way we can find a triplet with sum 0 is by having a negative number in the triplet if we don't have that there is no point iterating forward.
-            if(i == 0 || nums[i] != nums[i-1]) {
+        for(int i=0; i < nums.length && nums[i] <= 0; i++) {
+            if(i == 0 || nums[i] != nums[i-1]) {//avoid duplicate and does not give error on first element
                 twoSum2(nums, i, result);
             }
         }
