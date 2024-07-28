@@ -14,7 +14,7 @@ public class SearchInARotatedSortedArray {
 
 
     public int search(int[] nums, int target) {
-        int ans = nums[0], left = 0, right = nums.length-1;
+        int left = 0, right = nums.length-1;
 
         while(left <= right) {
             int mid = (left + right)/2;
