@@ -15,6 +15,7 @@ public class MinimumInSortedRotatedArray {
     }
 
     /**
+     * Had we sorted the array then the complexity would not have remained log(n) since this would required just for sorting.
      * We will maintain 2 pointers and compare both to find if left pointer is less than right pointer.
      *  - if l < r, we can assume range l and r is sorted and l is minimum in the range.
      *  - if l > r then minimum lies between l and r but not at l or r.
@@ -27,8 +28,8 @@ public class MinimumInSortedRotatedArray {
             return nums[0];
         }
 
-        while(left <= right) {
-            if(nums[left] < nums[right]) {
+        while(left <= right) {// The loop will stop when two adjacent numbers are being matched.
+            if(nums[left] < nums[right]) {// This will only be true in the last iteration when left most will always be greater than last one. This will also be true for non rotated fully sorted array.
                 ans = Math.min(ans, nums[left]);
             }
             int mid = (left + right) / 2;
