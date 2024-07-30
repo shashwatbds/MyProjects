@@ -6,9 +6,9 @@ public class CoinChange {
 
     public static void main(String[] args) {
         CoinChange obj = new CoinChange();
-//        System.out.println(obj.coinChange(new int[]{1,2,5}, 11));
-//        System.out.println(obj.coinChange(new int[]{2}, 3));
-//        System.out.println(obj.coinChange(new int[]{1}, 0));
+        System.out.println(obj.coinChange(new int[]{1,2,5}, 11));
+        System.out.println(obj.coinChange(new int[]{2}, 3));
+        System.out.println(obj.coinChange(new int[]{1}, 0));
         System.out.println(obj.coinChange(new int[]{1,3,5,6}, 8));
     }
 
