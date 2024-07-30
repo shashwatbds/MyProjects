@@ -2,6 +2,9 @@ package org.example.blind75.medium;
 
 import java.util.Arrays;
 
+/**
+ * Dynamic Programming
+ * */
 public class CoinChange {
 
     public static void main(String[] args) {
@@ -24,7 +27,8 @@ public class CoinChange {
         for(int i=1; i <= amount; i++) {//Since we already know the first element value.
             for(int j=0; j<coins.length; j++) {//Iterate over the input array.
                 if(i >=coins[j]) {//Since amount greater than the current coin value (count[j]) can not be used.
-                    amt[i] = Math.min(amt[i], 1+ amt[i-coins[j]]);//initially when default value will be populated then we will simply replace it with whatever value comes less than default value, in next iteration we will could update if new value is less than the previous one.
+                    amt[i] = Math.min(amt[i], 1+ amt[i-coins[j]]);//i will always be greater than equal to j due to the if condition we have above.
+                    // initially when default value will be populated then we will simply replace it with whatever value comes less than default value, in next iteration we will could update if new value is less than the previous one.
                 }
             }
         }
