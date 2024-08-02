@@ -1,4 +1,4 @@
-package org.example.blind75.medium;
+package org.example.blind75.greedy.medium;
 
 public class MaximumSubarray {
 

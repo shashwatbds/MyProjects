@@ -1,4 +1,4 @@
-package org.example.blind75.easy;
+package org.example.blind75.dp1.easy;
 
 /**
  * This is classic dynamic programming problem.

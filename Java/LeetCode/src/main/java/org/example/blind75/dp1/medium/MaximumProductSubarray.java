@@ -1,4 +1,4 @@
-package org.example.blind75.medium;
+package org.example.blind75.dp1.medium;
 
 /**
  * https://www.youtube.com/watch?v=Y6B-7ZctiW8

@@ -1,4 +1,4 @@
-package org.example.blind75.easy;
+package org.example.blind75.slidingwindow.easy;
 
 import java.time.Duration;
 import java.time.Instant;

@@ -1,4 +1,4 @@
-package org.example.blind75.medium;
+package org.example.blind75.TwoPointers.medium;
 
 /**
  * We will use two pointer approach here which will give us the time complexity of O(n)

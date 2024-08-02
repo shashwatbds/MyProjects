@@ -1,4 +1,4 @@
-package org.example.blind75.medium;
+package org.example.blind75.dp1.medium;
 
 import java.util.Arrays;
 import java.util.HashSet;

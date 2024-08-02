@@ -1,4 +1,4 @@
-package org.example.blind75.medium;
+package org.example.blind75.dp2.medium;
 
 /**
  * Dynamic Programing: Uses Memoization, the art of storing values in a recursive function.

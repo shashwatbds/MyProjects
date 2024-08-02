@@ -1,4 +1,4 @@
-package org.example.blind75.medium;
+package org.example.blind75.arraysandhashing.medium;
 
 import java.util.Arrays;
 

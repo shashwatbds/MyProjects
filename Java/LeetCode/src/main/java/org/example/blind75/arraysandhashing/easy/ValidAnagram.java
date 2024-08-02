@@ -1,4 +1,4 @@
-package org.example.blind75.easy;
+package org.example.blind75.arraysandhashing.easy;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,7 +36,7 @@ public class ValidAnagram {
         }
         int[] count = new int[26];//Size 26 for each alphabet of english language. We can also use a HashMap for this which would be more efficient for large sized strings.
         for(int i=0; i<s.length();i++) {
-            count[s.charAt(i) - 'a']--;
+            count[s.charAt(i) - 'a']--;//'a' equivalent int value is 97 and 'b' is 98 and so on, if the charAt(i) is a then it will update index 0 and so on.
             count[t.charAt(i) - 'a']++;
         }
 
