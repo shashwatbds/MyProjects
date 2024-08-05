@@ -1,4 +1,4 @@
-package org.example.blind75.TwoPointers.medium;
+package org.example.blind75.twopointers.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
