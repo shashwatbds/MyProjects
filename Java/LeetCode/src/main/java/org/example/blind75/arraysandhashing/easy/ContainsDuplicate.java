@@ -22,19 +22,14 @@ public class ContainsDuplicate {
 
     public boolean containsDuplicate(int[] nums) {//O(n)
 
-        Instant start = Instant.now();
-        Set<Integer> visited = new HashSet<>();
-        for(int i=0; i<nums.length; i++) {
-            if(visited.contains(nums[i])) {// fast access. O(1) for method contains method.
+        //BF - sorting and then checking consecutive elements
+        // Efficient - add in hashset
+        Set<Integer> set = new HashSet<>();
+        for(int num: nums) {
+            if(!set.add(num)) {
                 return true;
-            } else {
-                visited.add(nums[i]);
             }
         }
-
-        Instant finish = Instant.now();
-        long timeElapsed = Duration.between(start, finish).toMillis();
-        System.out.println("time taken to execute " + timeElapsed);
         return false;
     }
 
