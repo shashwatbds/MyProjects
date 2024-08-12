@@ -6,7 +6,6 @@ public class MergeTwoSortedLists {
 
     public static void main(String[] args) {
         MergeTwoSortedLists obj = new MergeTwoSortedLists();
-        System.out.println(obj.mergeTwoLists());
     }
 
     /**
