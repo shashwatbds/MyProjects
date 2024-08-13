@@ -15,43 +15,16 @@ public class LongestRepeatingCharacterReplacement {
 
     private int characterReplacement(String s, int k) {
 
-        int[] occurance = new int[26];
-        int left = 0;
-        int ans = 0;
-        int maxOccurance = 0;
-        for(int right = 0; right< s.length(); right++) {
-
-            maxOccurance = Math.max(maxOccurance, ++occurance[s.charAt(right)-'A']);
-            if(right - left + 1 - maxOccurance > k) {
-                occurance[s.charAt(left) - 'A']--;
-                left++;
+        int left = 0, ans = 0, maxOccurance = 0;
+        int[] occurrence = new int[26];
+        for(int right=0; right< s.length(); right++) {
+            maxOccurance = Math.max(maxOccurance, ++occurrence[s.charAt(right)-'A']);
+            if(right - left + 1 - maxOccurance > k) {//if in current substring (from left pointer and right pointer, we can form a valid substring by replacing k number of chars
+                occurrence[s.charAt(left)-'A']--;//because we need to reduce occurrence from left.
+                left++;//increase left pointer
             }
             ans = Math.max(ans, right-left+1);
         }
         return ans;
-    }
-
-
-    //Mine
-    private int characterReplacementMine(String s, int k) {
-
-        int max = 0;
-        for(int i=0; i< s.length(); i++) {
-            if(s.substring(i).length() < max) break;
-            if(i > 0 && s.charAt(i) == s.charAt(i-1)) continue;
-            int j=i+1, count = k;
-            while(j<s.length()){
-                if(s.charAt(i) == s.charAt(j))
-                    j++;
-                else if(count != 0) {
-                    j++;
-                    count--;
-                } else {
-                    break;
-                }
-            }
-            max = Math.max(max, j-i==1?0:j-i);
-        }
-        return max;
     }
 }

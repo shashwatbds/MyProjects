@@ -19,12 +19,12 @@ public class LongestSubStringWithoutRepeatingCharacters {
         System.out.println(obj.lengthOfLongestSubstringBruteForce(" "));
 
         System.out.println("\n\nEfficient Solution");
-        System.out.println(obj.lengthOfLongestSubstringEfficient("zxyzxyz"));
-        System.out.println(obj.lengthOfLongestSubstringEfficient("xxxx"));
-        System.out.println(obj.lengthOfLongestSubstringEfficient("abcabcbb"));
-        System.out.println(obj.lengthOfLongestSubstringEfficient("bbbbb"));
-        System.out.println(obj.lengthOfLongestSubstringEfficient("pwwkew"));
-        System.out.println(obj.lengthOfLongestSubstringEfficient(" "));
+        System.out.println(3 == obj.lengthOfLongestSubstringEfficient("zxyzxyz"));
+        System.out.println(1 == obj.lengthOfLongestSubstringEfficient("xxxx"));
+        System.out.println(3 == obj.lengthOfLongestSubstringEfficient("abcabcbb"));
+        System.out.println(1 == obj.lengthOfLongestSubstringEfficient("bbbbb"));
+        System.out.println(3 == obj.lengthOfLongestSubstringEfficient("pwwkew"));
+        System.out.println(1 == obj.lengthOfLongestSubstringEfficient(" "));
     }
 
     /***
