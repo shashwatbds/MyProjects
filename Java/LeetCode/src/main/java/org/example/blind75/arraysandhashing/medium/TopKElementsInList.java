@@ -27,23 +27,21 @@ public class TopKElementsInList {
      * Uses bucket sort.
      * Time Complexity: O(nlogk)
      * Space Complexity: O(n)
-     *
-     * TODO: In progress.
      * */
     private int[] topKFrequentMostEfficient(int[] nums, int k) {
         Map<Integer, Integer> count = new HashMap<>();
         int[] freq = new int[nums.length+1];
 
-        for (int n : nums)
+        for (int n : nums)//Creating a map of value and it's number of occurrences in array
             count.put(n, count.getOrDefault(n, 0) + 1);
 
-        for (Map.Entry<Integer, Integer> entry : count.entrySet())
+        for (Map.Entry<Integer, Integer> entry : count.entrySet())//If element exits n times then add that the index which is equal to number of occurrences. Example - if 1 exits 3 times then at index 3 add 1.
             freq[entry.getValue()]= entry.getKey();
 
         int[] result = new int[k];
         int counter = 0;
-        for(int i=nums.length; i>=0; i--)
-            if(freq[i] != 0 && counter < k) {
+        for(int i=nums.length; i>=0; i--)//The freq would be in ascending order hence we need to iterate from behind and only pick up values with non 0 values.
+            if(freq[i] != 0 && counter < k) {//
                 result[counter] = freq[i];
                 counter++;
             }
