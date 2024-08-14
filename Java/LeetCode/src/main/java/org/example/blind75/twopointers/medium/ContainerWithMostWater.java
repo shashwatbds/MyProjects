@@ -10,8 +10,8 @@ public class ContainerWithMostWater {
     public static void main(String[] args) {
 
         ContainerWithMostWater obj = new ContainerWithMostWater();
-        System.out.println(obj.maxArea(new int[] {1,8,6,2,5,4,8,3,7}));
-        System.out.println(obj.maxArea(new int[] {1,1}));
+        System.out.println(49 == obj.maxArea(new int[] {1,8,6,2,5,4,8,3,7}));
+        System.out.println(1 == obj.maxArea(new int[] {1,1}));
     }
 
     public int maxArea(int[] height) {

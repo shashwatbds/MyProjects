@@ -15,11 +15,11 @@ public class ValidPalindrome {
 
         System.out.println("\n\nEfficient Solution");
 
-        System.out.println(obj.isPalindrome("Was it a car or a cat I saw?"));
-        System.out.println(obj.isPalindrome("tab a cat"));
-        System.out.println(obj.isPalindrome("A man, a plan, a canal: Panama"));
-        System.out.println(obj.isPalindrome("race a car"));
-        System.out.println(obj.isPalindrome(" "));
+        System.out.println(Boolean.TRUE == obj.isPalindrome("Was it a car or a cat I saw?"));
+        System.out.println(Boolean.FALSE == obj.isPalindrome("tab a cat"));
+        System.out.println(Boolean.TRUE == obj.isPalindrome("A man, a plan, a canal: Panama"));
+        System.out.println(Boolean.FALSE == obj.isPalindrome("race a car"));
+        System.out.println(Boolean.TRUE == obj.isPalindrome(" "));
     }
 
     /**
