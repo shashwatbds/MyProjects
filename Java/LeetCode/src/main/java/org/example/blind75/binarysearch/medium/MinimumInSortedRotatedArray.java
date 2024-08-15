@@ -23,10 +23,10 @@ public class MinimumInSortedRotatedArray {
      * */
     public int findMin(int[] nums) {
 
-        int ans = nums[0], left = 0, right = nums.length-1;
         if(nums.length == 1) {
             return nums[0];
         }
+        int ans = nums[0], left = 0, right = nums.length-1;
 
         while(left <= right) {// The loop will stop when two adjacent numbers are being matched.
             if(nums[left] < nums[right]) {// This will only be true in the last iteration when left most will always be greater than last one. This will also be true for non rotated fully sorted array.
