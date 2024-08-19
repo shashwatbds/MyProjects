@@ -35,10 +35,10 @@ public class LinkedListCycle {
 
         ListNode slow = head;
         ListNode fast = head.next;
-        while (fast != null && slow != null && fast.next != null) {
+        while (fast != null && slow != null && fast.next != null) {//We need to check if fast.next is not null so that we do not get null pointer when we reassign fast inside the loop.
             fast = fast.next.next;
             slow = slow.next;
-            if(fast == slow)
+            if(fast == slow)//Reference matching.
                 return true;
         }
         return false;

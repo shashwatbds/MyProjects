@@ -14,9 +14,9 @@ public class ClimbingSteps {
     public static void main(String[] args) {
 
         ClimbingSteps obj = new ClimbingSteps();
-        System.out.println(obj.climbStairs(2));
-        System.out.println(obj.climbStairs(3));
-        System.out.println(obj.climbStairs(4));
+        System.out.println(2 == obj.climbStairs(2));
+        System.out.println(3 == obj.climbStairs(3));
+        System.out.println(5 == obj.climbStairs(4));
     }
 
     public int climbStairs(int n) {

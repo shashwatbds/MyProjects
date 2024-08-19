@@ -48,8 +48,8 @@ public class ReverseLinkedList {
         }
 
         ListNode rest = reverseListRecursion(head.next);
-        head.next.next = head;//uses pass by reference
-        head.next = null;
+        head.next.next = head;//uses pass by reference, Making it's next node point to itself, interchanging the pointer
+        head.next = null;//currently setting this as null.
         return rest;
     }
 }

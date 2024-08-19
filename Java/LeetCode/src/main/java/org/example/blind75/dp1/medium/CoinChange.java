@@ -9,10 +9,10 @@ public class CoinChange {
 
     public static void main(String[] args) {
         CoinChange obj = new CoinChange();
-        System.out.println(obj.coinChange(new int[]{1,2,5}, 11));
-        System.out.println(obj.coinChange(new int[]{2}, 3));
-        System.out.println(obj.coinChange(new int[]{1}, 0));
-        System.out.println(obj.coinChange(new int[]{1,3,5,6}, 8));
+        System.out.println(3 == obj.coinChange(new int[]{1,2,5}, 11));
+        System.out.println(-1 == obj.coinChange(new int[]{2}, 3));
+        System.out.println(0 == obj.coinChange(new int[]{1}, 0));
+        System.out.println(2 == obj.coinChange(new int[]{1,3,5,6}, 8));
     }
 
     public int coinChange(int[] coins, int amount) {
@@ -28,7 +28,8 @@ public class CoinChange {
             for(int j=0; j<coins.length; j++) {//Iterate over the input array.
                 if(i >=coins[j]) {//Since amount greater than the current coin value (count[j]) can not be used.
                     amt[i] = Math.min(amt[i], 1+ amt[i-coins[j]]);//i will always be greater than equal to j due to the if condition we have above.
-                    // initially when default value will be populated then we will simply replace it with whatever value comes less than default value, in next iteration we will could update if new value is less than the previous one.
+                    // initially when default value will be populated then we will simply replace it with whatever value comes less than default value,
+                    // in next iteration we could update if new value is less than the previous one.
                 }
             }
         }
