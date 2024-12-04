@@ -24,7 +24,8 @@ public class LinkedListCycle {
     /**
      * This algorithm uses two pointers, fast and slow, to traverse the linked list. The fast pointer moves twice as fast as the slow pointer.
      * If there is a cycle, the fast pointer will eventually catch up to the slow pointer. If there is no cycle,
-     * the fast pointer will reach the end of the list, and the function will return False. This algorithm is an efficient way to detect cycles in a singly-linked list.
+     * the fast pointer will reach the end of the list, and the function will return False.
+     * This algorithm is an efficient way to detect cycles in a singly-linked list.
      * Time Complexity: O(n)
      * SpaceComplexity: O(1) - constant.
      * */
