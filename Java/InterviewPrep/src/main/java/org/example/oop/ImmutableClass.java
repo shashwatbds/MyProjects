@@ -5,7 +5,7 @@ import org.example.util.TestData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImmutableClass {
+public final class ImmutableClass {
 
     private final String name;
     private final Integer id;

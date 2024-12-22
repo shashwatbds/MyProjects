@@ -1,6 +1,5 @@
 package org.example.concurrency.threadinteraction.waitnotify;
 
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
