@@ -8,7 +8,8 @@ import java.util.concurrent.Executors;
 public class ProducerConsumerUsingWaitNotify {
 
     public static void main(String[] args) {
-        Queue<Integer> buffer = new LinkedList<>(); int maxSize = 100;
+        Queue<Integer> buffer = new LinkedList<>();
+        int maxSize = 100;
 
         Producer producer = new Producer(buffer, maxSize);
         Consumer consumer = new Consumer(buffer, maxSize);

@@ -14,7 +14,7 @@ public class Producer implements Runnable{
 
     @Override
     public void run() {
-        for (int i = 0; i <= 50; i += 10) {
+        for (int i = 0; i <= 100; i++) {
             try {
                 System.out.println(String.format("Producer produced data %s and added to queue.",i));
                 queue.put(i);

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.java8;
 
 import org.example.pojo.Employee;
 import org.example.pojo.Student;
