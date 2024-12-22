@@ -38,7 +38,7 @@ public class ValidParenthesis {
         for (int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
             if(!mappedBrackets.containsKey(c)) {
-                stack.push((c));//Add all opening brackets in the stack until you encounter a closing bracket
+                stack.push(c);//Add all closing brackets in the stack until you encounter a closing bracket
             } else {
                 if(stack.isEmpty()) {//If stack is empty then first bracket can not be a closing bracket, hence returning false.
                     return false;
