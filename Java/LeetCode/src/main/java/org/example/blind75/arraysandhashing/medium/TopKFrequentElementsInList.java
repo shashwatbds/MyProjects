@@ -5,10 +5,10 @@ import java.util.*;
 /**
  * Amazon
  * */
-public class TopKElementsInList {
+public class TopKFrequentElementsInList {
 
     public static void main(String[] args) {
-        TopKElementsInList obj = new TopKElementsInList();
+        TopKFrequentElementsInList obj = new TopKFrequentElementsInList();
 //        System.out.println(obj.topKFrequentBruteForce(new int[]{1,1,1,2,2,3}, 2));
 //        System.out.println(obj.topKFrequentBruteForce(new int[]{7,7}, 1));
 //
@@ -29,23 +29,34 @@ public class TopKElementsInList {
      * Space Complexity: O(n)
      * */
     private int[] topKFrequentMostEfficient(int[] nums, int k) {
-        Map<Integer, Integer> count = new HashMap<>();
-        int[] freq = new int[nums.length+1];
 
-        for (int n : nums)//Creating a map of value and it's number of occurrences in array
-            count.put(n, count.getOrDefault(n, 0) + 1);
+        List<Integer>[] bucket = new List[nums.length + 1];
+        HashMap<Integer, Integer> hm = new HashMap<>();
 
-        for (Map.Entry<Integer, Integer> entry : count.entrySet())//If element exits n times then add that the index which is equal to number of occurrences. Example - if 1 exits 3 times then at index 3 add 1.
-            freq[entry.getValue()]= entry.getKey();
+        for (int num : nums) {
+            hm.put(num, hm.getOrDefault(num, 0) + 1);
+        }
 
-        int[] result = new int[k];
-        int counter = 0;
-        for(int i=nums.length; i>=0; i--)//The freq would be in ascending order hence we need to iterate from behind and only pick up values with non 0 values.
-            if(freq[i] != 0 && counter < k) {//
-                result[counter] = freq[i];
-                counter++;
+        for (int key : hm.keySet()) {
+            int freq = hm.get(key);
+            if (bucket[freq] == null) {
+                bucket[freq] = new ArrayList<>();
             }
-        return result;
+            bucket[freq].add(key);
+        }
+
+
+        int[] ans = new int[k];
+        int pos = 0;
+        for (int i = bucket.length - 1; i >= 0; i--) {
+            if (bucket[i] != null) {
+                for (int j = 0; j < bucket[i].size() && pos < k; j++) {
+                    ans[pos] = bucket[i].get(j);
+                    pos++;
+                }
+            }
+        }
+        return ans;
     }
 
     /**
