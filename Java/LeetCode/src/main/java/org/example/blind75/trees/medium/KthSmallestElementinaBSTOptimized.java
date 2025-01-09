@@ -20,7 +20,7 @@ public class KthSmallestElementinaBSTOptimized {
     private void kth(TreeNode root, int k) {
         if(root == null) return;
         kth(root.left, k);
-        count++;
+        count++;//left most element will be smallest and once you have traversed the left most element only then you would be in a position to increment the count.
         if(count == k) {
             result = root.val;
             return;

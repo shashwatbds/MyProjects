@@ -48,7 +48,7 @@ public class ReverseLinkedList {
         }
 
         ListNode rest = reverseListRecursion(head.next);
-        rest.next = head;//uses pass by reference, making it's next node point to itself,
+        head.next.next = head;//uses pass by reference, making it's next node point to itself,
         // currently head.next == rest, and we are setting rest.next to curr at every step and every loop will return rest
         // , interchanging the pointer
         //because our end condition also checks if head.next is null, if it is null then in this step we are setting
