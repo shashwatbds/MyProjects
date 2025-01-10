@@ -49,11 +49,10 @@ public class ReverseLinkedList {
 
         ListNode rest = reverseListRecursion(head.next);
         head.next.next = head;//uses pass by reference, making it's next node point to itself,
-        // currently head.next == rest, and we are setting rest.next to curr at every step and every loop will return rest
-        // , interchanging the pointer
-        //because our end condition also checks if head.next is null, if it is null then in this step we are setting
-        // last element's next as the second last item.
+        // currently head.next == rest, and we are setting rest.next to curr at every step and every loop will return rest,
+        // interchanging the pointer because our end condition also checks if head.next is null,
+        // if it is null then in this step we are setting last element's next as the second last item.
         head.next = null;//currently setting this as null.
-        return rest;
+        return rest;// at every step we return rest and rest.next would be head.
     }
 }
