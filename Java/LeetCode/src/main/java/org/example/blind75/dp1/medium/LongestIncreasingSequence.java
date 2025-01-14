@@ -16,9 +16,10 @@ public class LongestIncreasingSequence {
         System.out.println(4 == obj.lengthOfLIS(new int[]{0,1,0,3,2,3}));
         System.out.println(1 == obj.lengthOfLIS(new int[]{7,7,7,7,7,7,7}));
 
-        System.out.println(4 == obj.lengthOfLISBinarySearch(new int[]{10,9,2,5,3,7,101,18}));
-        System.out.println(4 == obj.lengthOfLISBinarySearch(new int[]{0,1,0,3,2,3}));
-        System.out.println(1 == obj.lengthOfLISBinarySearch(new int[]{7,7,7,7,7,7,7}));
+//        System.out.println(4 == obj.lengthOfLISBinarySearch(new int[]{10,9,2,5,3,7,101,18}));
+//        System.out.println(4 == obj.lengthOfLISBinarySearch(new int[]{0,1,0,3,2,3}));
+//        System.out.println(1 == obj.lengthOfLISBinarySearch(new int[]{7,7,7,7,7,7,7}));
+        System.out.println(4 == obj.lengthOfLISBinarySearch(new int[]{10,9,2,5,3,7,101,1,18}));
     }
 
     /**
@@ -52,26 +53,27 @@ public class LongestIncreasingSequence {
 
         // Initialize the answer list with the first element of nums
         ans.add(nums[0]);
-
         for (int i = 1; i < n; i++) {
             if (nums[i] > ans.get(ans.size() - 1)) {
-                // If the current number is greater than the last element of the answer
-                // list, it means we have found a longer increasing subsequence.
-                // Hence, we append the current number to the answer list.
+                // If the current number is greater than the last element of the answer list, it means we have
+                // found a longer increasing subsequence. Hence, we append the current number to the answer list.
                 ans.add(nums[i]);
             } else {
-                // If the current number is not greater than the last element of the answer list, we perform
-                // a binary search to find the smallest element in the answer list that is greater than or equal to the
-                // current number.
+                // If the current number is not greater than the last element of the answer list, we perform a binary search
+                // to find the smallest element in the answer list that is greater than or equal to the current number.
                 // The binarySearch method returns the index of the first element that is not less than the current number.
                 int low = Collections.binarySearch(ans, nums[i]);
 
-                // We update the element at the found position with the current number.
-                // By doing this, we are maintaining a sorted order in the answer list.
-                if (low < 0) {
-                    low = -(low + 1);
+                // We update the element at the found position with the current number. By doing this, we are maintaining a sorted order
+                // in the answer list.
+                if (low < 0) {//element not found
+                    low = -(low + 1);//this will set low to 0 if it is the smallest number
+                    //We are doing +1 here because this is less thank 0 initially and we need to find +ve index for it starting from 0.
                 }
-                ans.set(low, nums[i]);
+                ans.set(low, nums[i]);//replace the value in the answers list, this will still not increase the
+                // length of longest substring but will replace a more efficient value.
+                // This means the longest increasing substring will always have the smallest element as the first element
+                //This will sometimes overwrite wrong item in the list but it will still give the same size.
             }
         }
         // The size of the answer list represents the length of the longest increasing subsequence.

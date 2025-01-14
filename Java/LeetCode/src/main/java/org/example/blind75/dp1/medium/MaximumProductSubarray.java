@@ -7,27 +7,28 @@ public class MaximumProductSubarray {
 
     public static void main(String[] args) {
         MaximumProductSubarray obj = new MaximumProductSubarray();
-        System.out.println(obj.maxProduct(new int[]{2,3,-2,4}));
-        System.out.println(obj.maxProduct(new int[]{-2,0,-1}));
-        System.out.println(obj.maxProduct(new int[]{-2,3,-4}));
-        System.out.println(obj.maxProduct(new int[]{0,10,10,10,10,10,10,10,10,10,-10,10,10,10,10,10,10,10,10,10,0}));
+        System.out.println(6 == obj.maxProduct(new int[]{2,3,-2,4}));
+        System.out.println(0 == obj.maxProduct(new int[]{-2,0,-1}));
+        System.out.println(24 == obj.maxProduct(new int[]{-2,3,-4}));
+        System.out.println(1981284352 == obj.maxProduct(new int[]{0,10,10,10,10,10,10,10,10,10,-10,10,10,10,10,10,10,10,10,10,0}));
     }
 
     public int maxProduct(int[] nums) {
 
-        int n = nums.length;
-        int leftProduct = 1, rightProduct = 1;
-        int ans = nums[0];
-        for(int i=0; i<n; i++) {
+        if(nums.length == 0)
+            return 0;
 
-            leftProduct = leftProduct == 0 ? 1 : leftProduct;
-            rightProduct = rightProduct == 0 ? 1 : rightProduct;
+        int min = nums[0];
+        int max = nums[0];
+        int result = max;
+        for(int i=1; i< nums.length; i++) {
 
-            leftProduct *= nums[i];
-            rightProduct *= nums[n-1-i];
-
-            ans = Math.max(ans, Math.max(leftProduct, rightProduct));
+            int curr = nums[i];
+            int tempMax = Math.max(curr, Math.max(max*curr, min*curr));//because we need to also calculate new min in next step using old max value.
+            min = Math.min(curr, Math.min(max*curr, min*curr));
+            max = tempMax;//assign to new max.
+            result = Math.max(max, result);
         }
-        return ans;
+        return result;
     }
 }
