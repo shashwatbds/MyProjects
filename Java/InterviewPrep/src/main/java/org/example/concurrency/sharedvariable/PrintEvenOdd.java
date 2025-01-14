@@ -9,11 +9,16 @@ public class PrintEvenOdd implements Callable {
 
     private volatile int value = 1;
     private AtomicInteger integer = new AtomicInteger(0);
+    private volatile int val = 2;
+
     @Override
     public Integer call() {
         int number = 2*(value++);
         System.out.println(Thread.currentThread().getName()+" - Volatile - "+number);//Order not maintained
         System.out.println(Thread.currentThread().getName()+" - Atomic - "+integer.incrementAndGet()*2);//Order not maintained
+        synchronized (this) {
+          System.out.println(Thread.currentThread().getName()+" - Synchronized - "+val++);//Order maintained
+        }
         return number;
     }
 

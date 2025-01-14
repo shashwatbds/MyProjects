@@ -1,7 +1,6 @@
 package org.example.concurrency.threadinteraction.waitnotify;
 
 import java.util.Queue;
-import java.util.Random;
 
 public class Producer implements Runnable{
 
@@ -26,7 +25,6 @@ public class Producer implements Runnable{
                     }
                 }
 
-                Random random = new Random();
                 int i = queue.size();
                 System.out.println("Producing value : " + i);
                 queue.add(i);

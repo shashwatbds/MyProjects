@@ -5,7 +5,7 @@ import org.example.util.TestData;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ImmutableClass {
+public final class ImmutableClass {//1. final class
 
     private final String name;
     private final Integer id;
@@ -15,7 +15,7 @@ public final class ImmutableClass {
     public ImmutableClass(String name, Integer id, List<String> hobbies, List<Student>  studentsParam) {
         this.name = name;
         this.id = id;
-        this.hobbies = new ArrayList<>(hobbies);
+        this.hobbies = new ArrayList<>(hobbies);//2. List contains immutable object hence shallow copy of list is sufficient
 
         //// below is a trap, you are using same reference of the list passed and can be modified from outside the class.
         //// To use this you must have an immutable list passed using List.of()
@@ -26,7 +26,7 @@ public final class ImmutableClass {
 
         ////Deep copy if a backed collections is passed or List contains another reference vars
         students = new ArrayList<>();
-        studentsParam.forEach( s -> {
+        studentsParam.forEach( s -> {//3. List contains reference variable, hence deep copy is needed.
             Student student = new Student(s.getName(), s.getId(), s.getSubject(), s.getPercentage());
             students.add(student);
         });
@@ -66,7 +66,7 @@ public final class ImmutableClass {
         System.out.println(immutableClass.getHobbies());
         System.out.println(immutableClass.getStudents().size());//same since the list if not backed
         immutableClass.getStudents().add(new Student("Bipin", 23, "Arts", 78.9));//this will be added sinc we did not have deep copy of the list while returning.
-        System.out.println(immutableClass.getStudents().size());//Size wont change when we have copying list in constructor and getter but we will still be able to change the properties on student if we dont have deep copy of the student object as well.
+        System.out.println(immutableClass.getStudents().size());//Size won't change when we have copying list in constructor and getter but we will still be able to change the properties on student if we dont have deep copy of the student object as well.
         immutableClass.getStudents().get(1).setName("Rohit");
         System.out.println(immutableClass.getStudents().get(1));
     }

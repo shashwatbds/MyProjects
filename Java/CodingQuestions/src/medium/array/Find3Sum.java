@@ -9,40 +9,42 @@ public class Find3Sum {
 
 	public static void main(String[] args) {
 
-		Integer[] arr = {-1,0,1,2,-1,-4};
-		find(new ArrayList<Integer>(Arrays.asList(arr))).stream().forEach(System.out::println);
-		Integer[] arr1 = {0,1,1};
-		find(new ArrayList<Integer>(Arrays.asList(arr1))).stream().forEach(System.out::println);
-		Integer[] arr2 = {0,0,0};
-		find(new ArrayList<Integer>(Arrays.asList(arr2))).stream().forEach(System.out::println);
+		Find3Sum obj = new Find3Sum();
+		obj.threeSum(new int[]{-1,0,1,2,-1,-4});
+		obj.threeSum(new int[]{0,1,1});
+		obj.threeSum(new int[]{0,0,0});
 	}
 
-	private static List<List<Integer>> find(List<Integer> list) {
+	public List<List<Integer>> threeSum(int[] nums) {
 
-		List<List<Integer>> triplets = new ArrayList<>();
-		for(int i=0; i<list.size()-2; i++) {
-			int j=i+1;
-			while(j<list.size()-1) {
-				int k = j+1;
-				while(k<list.size()) {
-					if(list.get(i) + list.get(j) + list.get(k) == 0) {
-						List<Integer> triplet = new ArrayList<>();
-						triplet.add(list.get(i));triplet.add(list.get(j));triplet.add(list.get(k));
-						Collections.sort(triplet);
-						if(checkDuplicate(triplets, triplet)) {
-							triplets.add(triplet);
-						}
-					}
-					k++;
-				}
-				j++;
+		Arrays.sort(nums);// Sorting an array
+		List<List<Integer>> result = new ArrayList<>();
+
+		for(int i=0; i < nums.length && nums[i] <= 0; i++) {
+			if(i == 0 || nums[i] != nums[i-1]) {//avoid duplicate and does not give error on first element
+				twoSum2(nums, i, result);
 			}
 		}
-		return triplets;
+		return result;
 	}
 
-	private static boolean checkDuplicate(List<List<Integer>> triplets, List<Integer> triplet) {
-		return !triplets.contains(triplet);
-	}
 
+	private static void twoSum2(int[] nums, int i, List<List<Integer>> result) {
+		int left = i+1;
+		int right = nums.length -1;
+
+		while(left < right) {
+			int sum = nums[i] + nums[left] + nums[right];
+			if(sum < 0) { // If sum is negative and this is sorted array, the only way we can have sum closer to zero when left pointer is moved to right since the sum would increase.
+				left++;
+			} else if(sum > 0) {// If sum is negative and this is sorted array, the only way we can have sum closer to zero when right pointer is moved to left since the sum would decrease.
+				right--;
+			} else {
+				result.add(Arrays.asList(nums[i], nums[left++], nums[right--]));
+				while(left<right && nums[left] == nums[left-1]) {// if the next number is also same then skip it. this is to avoid duplicate triplets.
+					++left;
+				}
+			}
+		}
+	}
 }
