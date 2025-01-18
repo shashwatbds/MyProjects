@@ -26,15 +26,8 @@ public class ProductServiceTest {
     @InjectMocks
     private ProductService productService;
 
-    @BeforeEach
-    public void setup() {
-        // Initialize mocks
-        MockitoAnnotations.openMocks(this);
-    }
-
     @Test
     void testGetProductsFromApi() {
-// Arrange
         Set<Product> mockProducts = Set.of(
                 new Product(6447344, "Sainsbury's Skin on ASC Scottish Salmon Fillets x2 240g", "https://www.sainsburys.co.uk/gol-ui/product/sainsburys-responsibly-sourced-scottish-salmon-fillet-x2-240g", "BASIC"),
                 new Product(3052068, "Lurpak Slightly Salted Spreadable Blend of Butter \\u0026 Rapeseed Oil 500g", "https://www.sainsburys.co.uk/gol-ui/product/lurpak-slightly-salted-spreadable-500g", "BASIC")
