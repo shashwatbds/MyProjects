@@ -1,4 +1,4 @@
-package com.example.products.model;
+package com.example.products.client.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
