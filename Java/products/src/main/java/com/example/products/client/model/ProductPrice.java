@@ -1,15 +1,16 @@
 package com.example.products.client.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 import java.util.Objects;
 
-public record ProductPrice(@NotNull @Positive int productId,
-                           @NotNull @Positive double productPrice,
-                           @NotBlank String unitPriceMeasure,
-                           @NotNull @Positive int unitPriceMeasureAmount) {
+public record ProductPrice(@NotNull @Positive @JsonProperty("product_uid") int productId,
+                           @NotNull @Positive @JsonProperty("unit_price") double productPrice,
+                           @NotBlank @JsonProperty("unit_price_measure") String unitPriceMeasure,
+                           @NotNull @Positive @JsonProperty("unit_price_measure_amount")  int unitPriceMeasureAmount) {
 
     @Override
     public boolean equals(Object o) {
