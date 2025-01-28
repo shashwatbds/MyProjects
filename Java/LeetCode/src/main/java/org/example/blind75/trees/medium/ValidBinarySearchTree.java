@@ -2,6 +2,9 @@ package org.example.blind75.trees.medium;
 
 import org.example.blind75.trees.TreeNode;
 
+/**
+ * Using DFS: In-Order Traversal: in-order traversal allows us to traverse a BST in ascending order or values
+ * */
 public class ValidBinarySearchTree {
 
     public Integer prev;
