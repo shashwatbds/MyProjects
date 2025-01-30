@@ -17,9 +17,12 @@ public class LowestCommonAncestorofaBiraryTree {
         TreeNode right = lowestCommonAncestor(root.right, p, q);
 
         // If both left and right return a non-null value, current node is LCA
+        // This is because both p and q were found in the left and right subtree of this root
         if (left != null && right != null) return root;
 
         // Otherwise, return the non-null child (or null if both are null)
+        // This is because we the other node was not found  since we did not traverse below at line 13,
+        // this means the p is parent node of q or vice versa.
         return left != null ? left : right;
     }
 }
