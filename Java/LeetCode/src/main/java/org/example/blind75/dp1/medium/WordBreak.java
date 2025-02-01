@@ -19,8 +19,9 @@ public class WordBreak {
         dp[0] = true;
         Set<String> wordSet = new HashSet<>(wordDict);
 
-        for(int i=1; i<=s.length(); i++) {
-            for(int j=i-1; j>=0; j--) {
+        for(int i=1; i<=s.length(); i++) {//Iterate string per chars
+            for(int j=i-1; j>=0; j--) {//This is to check if the whole string exist or not, since at each index we will check if the existing word break exists in dp
+                // and the rest of the string is present in dict.
                 if(dp[j] && wordSet.contains(s.substring(j, i))) {
                     dp[i] = true;
                     break;
