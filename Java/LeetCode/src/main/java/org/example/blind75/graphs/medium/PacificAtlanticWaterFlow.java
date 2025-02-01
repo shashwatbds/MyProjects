@@ -39,20 +39,20 @@ public class PacificAtlanticWaterFlow {
 
     private void dfs(int row, int column, boolean[][] reachableGrid, int[][] heights) {
 
-        int[][] directions = new int[][] {{1,0}, {0,1}, {-1,0}, {0, -1}};
+        int[][] directions = new int[][] {{1,0}, {0,1}, {-1,0}, {0, -1}};//Helper for check up, down, left and right cells of the current cell.
 
-        reachableGrid[row][column] = true;
-        for(int[] direction : directions) {
+        reachableGrid[row][column] = true;//For the corner rows all cells will have this true by default.
+        for(int[] direction : directions) {//Checking all 4 directions one by one.
             int newRow = row+direction[0];
             int newColumn = column+direction[1];
-            if(newRow < 0 || newRow >= heights.length || newColumn < 0 || newColumn >= heights[0].length) {
+            if(newRow < 0 || newRow >= heights.length || newColumn < 0 || newColumn >= heights[0].length) {//Checking out of bounds
                 continue;//because we still want to check in other directions
             }
 
-            if(reachableGrid[newRow][newColumn]) {
+            if(reachableGrid[newRow][newColumn]) {//If already visited then ignore
                 continue;//because we still want to check in other directions
             }
-            if(heights[newRow][newColumn] >= heights[row][column]) {
+            if(heights[newRow][newColumn] >= heights[row][column]) {//We will call this method recursively only when value is higher in new cell.
                 dfs(newRow, newColumn, reachableGrid, heights);
             }
         }

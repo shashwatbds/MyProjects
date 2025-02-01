@@ -34,7 +34,7 @@ public class CustomArrayList<E> {
         if(Objects.nonNull(input)) {
             Object[] arr = input.toArray();
             if((size = arr.length) != 0) {
-                if(Objects.equals(input.getClass(), ArrayList.class) ){
+                if(Objects.equals(input.getClass(), ArrayList.class)) {
                     this.data = arr;
                     capacity = 10;
                 } else {
