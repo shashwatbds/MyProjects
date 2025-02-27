@@ -1,5 +1,7 @@
 package org.example.blind75.dp2.medium;
 
+import java.util.Objects;
+
 /**
  * Dynamic Programing: Uses Memoization, the art of storing values in a recursive function.
  *
@@ -30,9 +32,9 @@ public class LongestCommonSubsequence {
         for(int j = text2.length()-1; j>=0; j--) {
             for(int i = text1.length()-1; i>=0; i--) {
                 if(text1.charAt(i) == text2.charAt(j)) {
-                    matrix[i][j] = 1 + matrix[i+1][j+1];//1 more than the diagonal
+                    matrix[i][j] = 1 + matrix[i+1][j+1];//1 more than the diagonal, Same logic as Brute Force, we are moving 1 char each word when we see character equality.
                 } else {
-                    matrix[i][j] = Math.max(matrix[i+1][j], matrix[i][j+1]);
+                    matrix[i][j] = Math.max(matrix[i+1][j], matrix[i][j+1]);// Same logic as brute force.
                 }
             }
         }
@@ -50,12 +52,12 @@ public class LongestCommonSubsequence {
 
     private int lcsRecursiveBF(String text1, String text2, int n, int m) {
         //Base case: stops recursion.
-        if (n == 0 || m == 0)//This means we have reached end of one of the strings and can not further have a longer substring sequence.
+        if(m == text1.length() || n == text2.length())//This means we have reached end of one of the strings and can not further have a longer substring sequence.
             return 0;
 
-        if (text1.charAt(n - 1) == text2.charAt(m - 1))//if char is same the index
-            return 1 + lcsRecursiveBF(text1, text2, n - 1, m - 1);
+        if(Objects.equals(text1.charAt(m), text2.charAt(n)))//if char is same the index
+            return 1+ lcsRecursiveBF(text1, text2, m+1, n+1);
 
-        return Math.max(lcsRecursiveBF(text1, text2, n - 1, m), lcsRecursiveBF(text1, text2, n, m - 1));
+        return  Math.max(lcsRecursiveBF(text1, text2, m+1, n), lcsRecursiveBF(text1, text2, m, n+1));
     }
 }
